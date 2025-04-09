@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/Home.css">
+</head>
+<body>
+    <div class="navBar">
+        <ul>
+            <li>Home</li>
+            <li>Service</li>
+            <li>About</li>
+            <li>Support</li>
+
+        </ul>
+    </div>
+    <nav class="navigation">
+        <div class="searchBarContainer">
+            <input type="text" class="searchBar">
+            <button onclick="search();">Search</butto>
+            
+        </div>
+        <div class="modeContainer" onclick="mode();">
+            <div class="toggler"></div>
+        </div>
+    </nav>
+    <div class="rotatingShow">
+        
+        <div class="slider" style="--quantity:12;">
+            <div class="slidingPicture" style="--position:1"><img src="../images/abay.jpg" alt=""></div>
+            <div class="slidingPicture" style="--position:2"><img src="../images/ertale.jpg" alt=""></div>
+            <div class="slidingPicture" style="--position:3"><img src="../images/mauntains.jpg" alt=""></div>
+            <div class="slidingPicture" style="--position:4"><img src="../images/sunset.jpg" alt=""></div>
+            <div class="slidingPicture" style="--position:5"><img src="../images/waterFall.jpg" alt=""></div>
+            <div class="slidingPicture" style="--position:6"><img src="../images/nature.jpg" alt=""></div>
+            <div class="slidingPicture" style="--position:7"><img src="../images/ertale.jpg" alt=""></div>
+            <div class="slidingPicture" style="--position:8"><img src="../images/mauntains.jpg" alt=""></div>
+            <div class="slidingPicture" style="--position:9"><img src="../images/sunset.jpg" alt=""></div>
+            <div class="slidingPicture" style="--position:10"><img src="../images/waterFall.jpg" alt=""></div>
+            <div class="slidingPicture" style="--position:11"><img src="../images/nature.jpg" alt=""></div>
+            <div class="slidingPicture" style="--position:12"><img src="../images/nature.jpg" alt=""></div>
+        </div>
+        <div class="companyName">
+            <h1 data-content="TRAVELCRAFT">TRAVELCRAFT</h1>
+            <div class="developer">
+                <h2>ETHIOPIAN</h2>
+                <p>
+                    We Are A Touring Organization Currently Oprating In Ethiopia
+                </p>
+            </div>
+            <div class="uniqueAnimal"></div>
+        </div>
+    </div>
+    <div class="marqueeContainer">
+    <h1 style="margin-bottom:50px;font-size: 50px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+    ">Find your next destination</h1>
+    <div class="marquee">
+        <a href="favourite.html"><div class="destination"></div></a>
+        <div class="destination" onclick="viewOromia();"></div>
+        <div class="destination" onclick="viewAmhara();"></div>
+        <div class="destination"></div>
+        <div class="destination"></div>
+        <div class="destination"></div>
+        <div class="destination"></div>
+    </div>
+</div>
+<div class="nextPage">
+    <div class="picture">
+        <image src="../images/nature.jpg" class="image"></image>
+    </div>
+    <div class="pictureDetails"></div>
+    <div class="leftTop">
+        <div class="imageContainer"></div>
+        <div class="imageDetails">
+            We Are Excited Announcing That We Are Now Working With TH ETHIOPIAN airline!
+        </div>
+        <div class="downDetails">
+            <div class="logoContainer">
+            ETHIOPIAN
+            <div class="airlineLogo">
+                <div class="one"></div>
+                <div class="Two"></div>
+                <div class="Three"></div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="favContainer">
+    <div class="favDetail">
+        <h1>Abay</h1>
+        <p>
+            It is A River Originate from Ethiopia And Go to the madetrania sea
+
+           <br> It is crusial from most nothern and eastern african country there economy is built on it
+            Currently ethiopia is building a Dam that will light up the country and it generate greate power and it can light up neghbouring counter
+        </p>
+        
+    </div>
+    <div class="favoritePlaces">
+        <div class="favorites "><a href='favorite.html'><image src="../images/abay.jpg" class="image"></image></a></div>
+        <div class="favorites "><a href='favorite.html'><image src="../images/awash-park-5.jpg" class="image"></image></a></div>
+        <div class="favorites "><a href='favorite.html'><image src="../images/lalibela.jpg" class="image"></image></a></div>
+        <div class="favorites "><a href='favorite.html'><image src="../images/baleViewTwo.jpg" class="image"></image></a></div>
+        <div class="favorites "><a href='favorite.html'><image src="../images/jimma.jpg" class="image"></image></a></div>
+        <div class="favorites "><a href='favorite.html'><image src="../images/omer.jpg" class="image"></image></a></div>
+    </div>
+    <div class="btnContainer">
+        <button onclick="nextView();">next</button>
+        <button onclick="preView();">prev</button>
+
+    </div>
+</div>
+<script type="module" src="../Javascripts/Home.js"></script>
+</body>
+</html>
