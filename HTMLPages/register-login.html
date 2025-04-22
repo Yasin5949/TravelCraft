@@ -10,27 +10,34 @@
     <div class="displayContainer" >
         <image src="../images/mauntains.jpg" class="comercialImages"></image>
         <div class="introLeft"></div>
-        <div class="introRight"></div>
         <div class="introMiddleTop"></div>
-        <div class="introMiddleBottom"></div>
+        
 
     </div>
     <div class="formContainer">
-        <form>
-            <h1>Login</h1>
-            <label><legend>username</legend>
-                <input type="text" placeholder="">
+        <form action="register.php" method="post">
+            <h1>Register</h1>
+            <label><legend>FirstName</legend>
+                <input type="text" placeholder="" name="email">
             </label>
-            <label><legend>Password</legend>
-                <input type="password" placeholder="">
+            <label><legend>LastName</legend>
+                <input type="text" placeholder="" name="email">
+            </label>
+            <label><legend>Email</legend>
+                <input type="text" placeholder="" name="email">
+            </label>
+            <label><legend>password</legend>
+                <input type="password" placeholder="" name="password">
+            </label>
+            <label><legend>confirmPassword</legend>
+                <input type="password" placeholder="" name="confirmPassword">
             </label><br>
-            <a href="#">Forget Password</a>
-            <input type="submit" value="Login" class="LoginBtn">
+            <input type="submit" value="Register" class="LoginBtn">
         </form>
         <div class="message">
-            <h2>WELCOME!</h2>
-            <p>we are dedicated in providing a clear and fast service to our users </p>
-            <button class="registerBtn" onclick="register();">Create Account</button>
+            <h2>Hey!</h2>
+            <p>Join Us On Exploring Te beautiful nature of Ethiopia </p>
+            <button class="registerBtn" onclick="loginPage();">I Have Account</button>
         </div>
     </div>
     <script src="../Javascripts/register-login.js"></script>

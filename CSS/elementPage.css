@@ -1,5 +1,5 @@
 body{
-    background-color:#9188c6;
+    background-color:#ededed;
 }
 .prev{
     position:fixed;
@@ -20,31 +20,6 @@ body{
     background-color:black;
 }
 .change:hover{
-    transform:scale(1.1);
-}
-.modeContainer{
-    position:fixed;
-    right:0px;
-    width:50px;
-    height:44px;
-}
-.mode{
-    right:10px;
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    background-color:black;
-}
-.modeTwo{
-    position:absolute;
-    top:-10px;
-    right:2px;
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    background-color:#9188c6;
-}
-.modeContainer:hover{
     transform:scale(1.1);
 }
 .navigation{
@@ -102,7 +77,7 @@ body{
     top:0px;
     width:70%;
     height:100%;
-    background-color:#c6effe;
+    background-color:#252525;
     border-radius:50px;
 }
 .innerContainer{
@@ -194,7 +169,7 @@ body{
     top:10%;
     width:30%;
     height:90%;
-    background-color:#c6effe;
+    background-color:#252525;
     border-radius:50px;
 }
 .containerTwo .messageContainer{
@@ -340,8 +315,8 @@ zoomIn{
     width:80%;
     margin-left:7%;
     height:50px;
-    background-color:#c6effe;
     border-radius:50px;
+    color:white;
 }
 .topNav div{
     display:inline;
@@ -352,11 +327,12 @@ zoomIn{
     position:absolute;
     width:90%;
     height:20%;
-    background-color:#B3FF7D;
+    background-color:#252525cc;
     left:5%;
     bottom:-10%;
     border-radius:50px;
     text-align: bottom;
+    color:white;
 }
 .menu{
     position:absolute;

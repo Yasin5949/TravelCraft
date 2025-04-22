@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
     <link rel="stylesheet" href="../CSS/Home.css">
 </head>
 <body>
     <div class="navBar">
-        <ul>
-            <li>Home</li>
-            <li>Service</li>
-            <li>About</li>
-            <li>Support</li>
-
-        </ul>
+        <div class="first"></div>
+        <div class="middle">
+            <ul>
+                <li class="activePage">Home</li>
+                <a href="Service.html"><li>Service</li></a>
+                <a href="Support.html"><li>Support</li></a>
+                <a href="About.html"><li>About</li></a>
+            </ul>
+        </div>
+        <div class="last">
+            <div class="profile" onclick="Menu();"></div>
+        </div>
     </div>
+    <div class="menu" ></div>
     <nav class="navigation">
         <div class="searchBarContainer">
-            <input type="text" class="searchBar">
-            <button onclick="search();">Search</butto>
-            
+            <input type="text" class="searchBar" placeholder="Enter Place">
+            <button onclick="search();">Search</button>
         </div>
         <div class="modeContainer" onclick="mode();">
             <div class="toggler"></div>
@@ -53,44 +58,69 @@
             <div class="uniqueAnimal"></div>
         </div>
     </div>
-    <div class="marqueeContainer">
+<div class="nextPage">
+    <div class="customerOne">
+        <div class="customerPicture"></div>
+        <div class="customerQuote"></div>
+        <a href="register-login.html"><button>Get Started</button></a>
+    </div>
+    <div class="customerTwo">
+        <div class="customerPicture"></div>
+        <div class="customerQuote"></div>
+
+        <button>Packages</button>
+    </div>
+    <div class="customerThree">
+        <div class="customerPicture"></div>
+        <div class="customerQuote"></div>
+        <button>Book Now</button>
+    </div>
+</div>
+<div class="marqueeContainer">
     <h1 style="margin-bottom:50px;font-size: 50px;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     
     ">Find your next destination</h1>
     <div class="marquee">
-        <a href="favourite.html"><div class="destination"></div></a>
-        <div class="destination" onclick="viewOromia();"></div>
-        <div class="destination" onclick="viewAmhara();"></div>
-        <div class="destination"></div>
-        <div class="destination"></div>
-        <div class="destination"></div>
-        <div class="destination"></div>
-    </div>
-</div>
-<div class="nextPage">
-    <div class="picture">
-        <image src="../images/nature.jpg" class="image"></image>
-    </div>
-    <div class="pictureDetails"></div>
-    <div class="leftTop">
-        <div class="imageContainer"></div>
-        <div class="imageDetails">
-            We Are Excited Announcing That We Are Now Working With TH ETHIOPIAN airline!
+        <div class="destination">
+            <img src="../images/nature.jpg" alt="">
+            <div class="region">Addis</div>
         </div>
-        <div class="downDetails">
-            <div class="logoContainer">
-            ETHIOPIAN
-            <div class="airlineLogo">
-                <div class="one"></div>
-                <div class="Two"></div>
-                <div class="Three"></div>
-            </div>
-            </div>
+        <div class="destination" onclick="viewOromia();">
+            <img src="../images/baleViewFour.jpg">
+            <div class="region">Oromia</div>
+        </div>
+        <div class="destination" onclick="viewAmhara();">
+            <img src="../images/lalibela.jpg" alt="">
+            <div class="region">Amhara</div>
+        </div>
+        <div class="destination">
+            <img src="../images/ertale.jpg" alt="">
+            <div class="region">Afar</div>
+        </div>
+        <div class="destination">
+            <div class="region">Somali</div>
+        </div>
+        <div class="destination">
+            <div class="region">Tigray</div>
+        </div>
+        <div class="destination">
+            <div class="region">Hari</div>
+        </div>
+        <div class="destination">
+            <div class="region">South</div>
+        </div>
+        <div class="destination">
+            <div class="region">Benishangul</div>
+        </div>
+        <div class="destination">
+            <img src="../images/Gambela.jpg" alt="">
+            <div class="region">Gambela</div>
         </div>
     </div>
 </div>
 <div class="favContainer">
+    <h1 class="topic">Famous Places</h1>
     <div class="favDetail">
         <h1>Abay</h1>
         <p>

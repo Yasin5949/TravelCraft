@@ -2,37 +2,7 @@ import { places } from "../Data/favoritePlaces.js";
 let currentIndex=0;
 
 let ThemeMode=0;
-function mode(){
-    if(ThemeMode===0){
-        document.querySelector(".mode").style.background="snow";
-        document.querySelector("body").style.background="#13141d";
-        document.querySelector(".next").style.background="snow";
-        document.querySelector(".prev").style.background="snow";
-        document.querySelector(".modeTwo").style.background="#13141d";
-        document.querySelector(".bottomNav").style.background="#c6effe";
-        document.querySelector(".containerOne").style.background="#b3ff7d";
-        document.querySelector(".containerTwo").style.background="#b3ff7d";
-        document.querySelector(".topNav").style.background="#b3ff7d";
-        document.querySelector(".modeTwo").style.background="#13141d";
-        document.querySelector(".betterCafe").style.background="#ededed";
 
-        ThemeMode=1;
-    }
-    else{
-        document.querySelector(".mode").style.background="black";
-        document.querySelector("body").style.background="#9188c6";
-        document.querySelector(".next").style.background="black";
-        document.querySelector(".prev").style.background="black";
-        document.querySelector(".modeTwo").style.background="#9188c6";
-        document.querySelector(".bottomNav").style.background="#b3ff7d";
-        document.querySelector(".containerOne").style.background="#c6effe";
-        document.querySelector(".containerTwo").style.background="#c6effe";
-        document.querySelector(".topNav").style.background="#c6effe";
-        document.querySelector(".betterCafe").style.background="#13141d";
-        
-        ThemeMode=0;
-    }
-}
 function active(){
     let accumulator=document.querySelectorAll(".nav");
     accumulator.forEach((acumulator)=>{
@@ -41,8 +11,44 @@ function active(){
 }
 document.querySelector('.next').addEventListener('click',()=>{
     currentIndex=currentIndex + 1;
+    document.querySelectorAll(".nav").forEach((nav)=>{
+        if(nav.classList.contains('place')){
+            nav.classList.add('active');
+        }
+        else{
+        nav.classList.remove('active');}})
     if(currentIndex === 6){
         currentIndex = 0;
+    }
+    document.querySelector(".containerTwo").innerHTML=`
+            <div class="imageContainer">
+            <image src="${places[currentIndex].aboutPlace.image}" class="image" id="zoomIn">
+            </image>
+            <div class="zoom">
+                <div class="socialMedia"><image src="../images/tiktok.png" class="images" id="tiktok"></image></div>
+                <div class="socialMedia"><image src="../images/linkdin.png" class="images" id="linkdin"></image></div>
+                <div class="socialMedia"><image src="../images/instagram.webp" class="images " id="instagram"></image></div>
+                <div class="socialMedia"><image src="../images/facebook.png" class="images" id="facebook"></image></div>
+            </div>
+        
+        </div>
+        `;
+        document.querySelector(".innerContainer").innerHTML=`
+                <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: 50px;">${places[currentIndex].aboutPlace.placeName}</h1>
+                <p style="font-size: larger;color:#ededed">${places[currentIndex].aboutPlace.discription}</p>
+        `;
+
+})
+document.querySelector('.prev').addEventListener('click',()=>{
+    currentIndex=currentIndex - 1;
+    document.querySelectorAll(".nav").forEach((nav)=>{
+        if(nav.classList.contains('place')){
+            nav.classList.add('active');
+        }
+        else{
+        nav.classList.remove('active');}});
+    if(currentIndex === -1){
+        currentIndex = 5
     }
     document.querySelector(".containerTwo").innerHTML=`
             <div class="imageContainer">
@@ -63,30 +69,6 @@ document.querySelector('.next').addEventListener('click',()=>{
         `;
 
 })
-document.querySelector('.prev').addEventListener('click',()=>{
-    currentIndex=currentIndex - 1;
-    if(currentIndex === -1){
-        currentIndex = 5
-    }
-    document.querySelector(".containerTwo").innerHTML=`
-            <div class="imageContainer">
-            <image src="${places[currentIndex].aboutPlace.image}" class="image" id="zoomIn">
-            </image>
-            <div class="zoom">
-                <div class="socialMedia"><image src="../images/tiktok.png" class="images" id="tiktok"></image></div>
-                <div class="socialMedia"><image src="../images/linkdin.png" class="images" id="linkdin"></image></div>
-                <div class="socialMedia"><image src="../images/instagram.webp" class="images " id="instagram"></image></div>
-                <div class="socialMedia"><image src="../images/facebook.png" class="images" id="facebook"></image></div>
-            </div>
-        
-        </div>
-        `;
-        document.querySelector(".innerContainer").innerHTML=`
-                <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: 50px;">ABAY RIVER</h1>
-                <p style="font-size: larger;">${places[currentIndex].aboutPlace.discription}</p>
-        `;
-
-})
 document.querySelectorAll(".nav").forEach((nav)=>{
     nav.addEventListener('click',()=>{
         nav.classList.add('active');
@@ -98,7 +80,7 @@ document.querySelectorAll(".nav").forEach((nav)=>{
         `;
         document.querySelector(".innerContainer").innerHTML=``;
     }
-    if(nav.classList.contains("location")){
+    if(nav.classList.contains("place")){
         document.querySelector(".containerTwo").innerHTML=`
             <div class="imageContainer">
             <image src="${places[currentIndex].aboutPlace.image}" class="image" id="zoomIn">
@@ -219,4 +201,6 @@ function removeIndex(){
 }
 window.active=active;
 window.rating=rating;
+window.mode=mode;
+
 

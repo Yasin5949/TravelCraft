@@ -1,37 +1,27 @@
 const mauntain=`
             <image src="../images/mauntains.jpg" class="comercialImages"></image>
             <div class="introLeft"></div>
-            <div class="introRight"></div>
             <div class="introMiddleTop"></div>
-            <div class="introMiddleBottom"></div>
     `;
     const abay=`
     <image src="../images/abay.jpg" class="comercialImages"></image>
     <div class="introLeft"></div>
-    <div class="introRight"></div>
     <div class="introMiddleTop"></div>
-    <div class="introMiddleBottom"></div>
 `;
 const ertale=`
             <image src="../images/ertale.jpg" class="comercialImages"></image>
             <div class="introLeft"></div>
-            <div class="introRight"></div>
             <div class="introMiddleTop"></div>
-            <div class="introMiddleBottom"></div>
     `;
 const water=`
     <image src="../images/waterFall.jpg" class="comercialImages"></image>
     <div class="introLeft"></div>
-    <div class="introRight"></div>
     <div class="introMiddleTop"></div>
-    <div class="introMiddleBottom"></div>
 `;
 const sunset=`
             <image src="../images/sunset.jpg" class="comercialImages"></image>
             <div class="introLeft"></div>
-            <div class="introRight"></div>
             <div class="introMiddleTop"></div>
-            <div class="introMiddleBottom"></div>
     `;
 let selector=1;
 function display(){
@@ -67,7 +57,13 @@ function register(){
     document.querySelector(".formContainer").innerHTML=`
     <form>
             <h1>Register</h1>
-            <label><legend>username</legend>
+            <label><legend>FirstName</legend>
+                <input type="text" placeholder="">
+            </label>
+            <label><legend>LastName</legend>
+                <input type="text" placeholder="">
+            </label>
+            <label><legend>Email</legend>
                 <input type="text" placeholder="">
             </label>
             <label><legend>password</legend>
@@ -87,16 +83,16 @@ function register(){
 }
 function loginPage(){
     document.querySelector(".formContainer").innerHTML=`
-    <form>
+    <form action="Login.php" method="post">
             <h1>Login</h1>
-            <label><legend>username</legend>
-                <input type="text" placeholder="">
+            <label><legend>Email</legend>
+                <input type="text" placeholder="" name="email">
             </label>
             <label><legend>Password</legend>
-                <input type="password" placeholder="">
+                <input type="password" placeholder="" name="password">
             </label><br>
             <a href="#">Forget Password</a>
-            <input type="submit" value="Login" class="LoginBtn">
+            <input type="submit" value="Login" class="LoginBtn" name="login">
         </form>
         <div class="message">
             <h2>WELCOME!</h2>

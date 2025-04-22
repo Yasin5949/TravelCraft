@@ -1,0 +1,427 @@
+body{
+    background:#ededed;
+    overflow: hidden;
+}
+.navBar{
+    position:fixed;
+    top:0px;
+    left:0px;
+    margin-bottom:20px;
+    width:100%;
+    height:50px;
+    z-index:3;
+    display: flex;
+    align-items: center;
+}
+.navBar .first{
+    width:25%;
+    height:100%;
+}
+.navBar .middle{
+    width:50%;
+    height:100%;
+    background:grey;
+    text-align: center;
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:20px;
+}
+.navBar .last{
+    width:30%;
+    height:100%;
+}
+.navBar .middle ul{
+    list-style-type: none;
+}
+.navBar .middle ul li{
+    display:inline;
+    margin-right:20px;
+    cursor:pointer;
+    font-size: larger;
+}
+.navBar .middle ul li:hover{
+    color:white;
+}
+.navBar .middle ul li:active{
+    color:red;
+}
+.navBar .middle ul a{
+    text-decoration: none;
+    color:black;
+}
+.navBar .middle ul .activePage{
+    color:white;
+    border-bottom:2px solid black;
+}
+.navBar .last .profile{
+    position:absolute;
+    right:1%;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    cursor:pointer;
+    background-color:black;
+}
+.menu{
+    position:fixed;
+    right:0.5%;
+    top:55px;
+    width:200px;
+    z-index:5;
+    display:grid;
+    background-color:rgba(0, 0, 0, 0.63);
+    transition:1s;
+}
+.menu .account{
+    position:absolute;
+    width:100%;
+    height:70px;
+}
+.menu .account .profileInMenu{
+    position:absolute;
+    top:calc(50% - 25px);
+    right:5px;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background-color:grey;
+}
+.menu .account .customerName{
+    position:absolute;
+    left:20px;
+    top:calc(50% - 15px);
+    width:100px;
+    height:30px;
+    background-color:grey
+}
+.menu .account .exit{
+    position:absolute;
+    left:-13%;
+    top:-25px;
+    width:30px;
+    height:30px;
+    cursor:pointer;
+}
+.menu .account .exit .line{
+    position:absolute;
+    height:3px;
+    width:100%;
+    transform:translateY(10px)
+            rotateZ(45deg);
+    background-color:red
+}
+.menu .account .exit .lineTwo{
+    position:absolute;
+    height:3px;
+    width:100%;
+    transform:translateY(10px)
+            rotateZ(-45deg);
+    background-color:red
+}
+.menu .editProfile{
+    position:absolute;
+    top:70px;
+    width:100%;
+    height:40px;
+    text-align: center;
+    font-size: larger;
+    color:white;
+    cursor:pointer;
+    border-top:2px solid white;
+
+}
+.menu .history{
+    position:relative;
+    top:110px;
+    width:100%;
+    height:40px;
+    text-align: center;
+    font-size: larger;
+    color:white;
+    cursor:pointer;
+    border-top:2px solid white;
+
+}
+.menu .logOut{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:50px;
+    text-align: center;
+    font-size: larger;
+    cursor:pointer;
+    color:red;
+    border-top:2px solid white;
+}
+.optionContainer{
+    position:absolute;
+    left:0px;
+    top:50px;
+    height:100%;
+    width:300px;
+    background-color:grey;
+}
+.optionContainer .firstGroup{
+    position:absolute;
+    width:100%;
+    height:40%;
+    overflow: auto;
+    overflow-x: hidden;
+    border-bottom:3px solid black;
+}
+.optionContainer .firstGroup .profileContainer{
+    position:absolute;
+    width:100%;
+    height:70px;
+    background-color:rgb(149, 136, 136);
+}
+.optionContainer .firstGroup .profileContainer .profileInService{
+    position:absolute;
+    top:calc(50% - 30px);
+    left:5px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    text-align: center;
+    color:black;
+    font-size: 40px;
+    overflow: hidden;
+    cursor:pointer;
+    background-color:rgba(0, 0, 0, 0.379);
+}
+.optionContainer .firstGroup .profileContainer h1{
+    position:absolute;
+    left:80px;
+    top:-10px;
+    width:200px;
+    cursor:pointer;
+    height:30px;
+    color:white;
+}
+.optionContainer .firstGroup .profileContainer p{
+    position:absolute;
+    left:80px;
+    bottom:-10px;
+    width:200px;
+    cursor:pointer;
+    height:20px;
+    color:white;
+}
+.optionContainer .firstGroup .newBooking{
+    position:relative;
+    top:73px;
+    width:100%;
+    height:30px;
+    text-align: left;
+    padding-left:20%;
+    cursor:pointer;
+    font-size: larger;
+    color:white;
+
+}
+.optionContainer .firstGroup .cancelBooking{
+    position:absolute;
+    top:105px;
+    width:100%;
+    height:30px;
+    text-align: left;
+    padding-left:20%;
+    cursor:pointer;
+    font-size: larger;
+    color:white;
+}
+.optionContainer .firstGroup .reFund{
+    position:absolute;
+    top:136px;
+    width:100%;
+    height:30px;
+    text-align: left;
+    padding-left:20%;
+    cursor:pointer;
+    font-size: larger;
+    color:white;
+}
+.optionContainer .firstGroup .canceledBookings{
+    position:absolute;
+    top:167px;
+    width:100%;
+    height:30px;
+    text-align: left;
+    padding-left:20%;
+    cursor:pointer;
+    font-size: larger;
+    color:white;
+}
+.optionContainer .firstGroup .Wages{
+    position:absolute;
+    top:198px;
+    width:100%;
+    height:30px;
+    text-align: left;
+    padding-left:20%;
+    cursor:pointer;
+    font-size: larger;
+    color:white;
+}
+.optionContainer .firstGroup .allHistory{
+    position:absolute;
+    top:229px;
+    width:100%;
+    height:30px;
+    text-align: left;
+    padding-left:20%;
+    cursor:pointer;
+    font-size: larger;
+    color:white;
+}
+.optionContainer .groupTwo{
+    position:absolute;
+    top:41%;
+    width:100%;
+    height:40%;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.optionContainer .groupTwo .security{
+    width:100%;
+    height:30px;
+    text-align: left;
+    padding-left:20%;
+    font-size: larger;
+    color:white;
+    cursor:pointer;
+}
+.optionContainer .groupTwo .terms{
+    width:100%;
+    height:30px;
+    text-align: left;
+    padding-left:20%;
+    font-size: larger;
+    color:white;
+    cursor:pointer;
+}
+.displayContainer{
+    position:fixed;
+    left:300px;
+    width:70%;
+    height:100%;
+}
+.displayContainer .booked{
+    position:absolute;
+    left:calc(50% - 300px);
+    top:10%;
+    width:600px;
+    height:50%;
+    background-color:hsla(0, 0%, 50%, 0.5);
+}
+.displayContainer .booked .placeName{
+    position:absolute;
+    left:calc(50% - 150px);
+    top:130px;
+    width:300px;
+    height:50px;
+    text-align: center;
+    color:rgb(255, 255, 255);
+    background:rgba(0, 0, 0, 0.41);
+    font-size: 40px;
+    padding-right:20px;
+    border-bottom:2px solid white;
+}
+.displayContainer .booked .placeImage{
+    position:absolute;
+    width:100%;
+    height:200px;
+    background-color:black;
+    border-bottom-right-radius:20px;
+    border-bottom-left-radius:20px;
+    overflow: hidden;
+}
+.displayContainer .booked .placeImage img{
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+.displayContainer .booked .note{
+    position:absolute;
+    bottom:5%;
+    left:calc(50% - 40%);
+    width:80%;
+    height:200px;
+    background-color:black;
+}
+.displayContainer .detailsContainer{
+    position:absolute;
+    bottom:0px;
+    display:flex;
+    align-items: center;
+    width:100%;
+    height:35%;
+    overflow-x: auto;
+    background-color:grey;
+}
+.displayContainer .detailsContainer .details{
+    position:relative;
+    left:10%;
+    width: 30%;
+    height:200px;
+    background-color:black;
+}
+.displayContainer .detailsContainer .details .bookedDate{
+    position:relative;
+    top:5px;
+    width:100%;
+    height:30px;
+    text-align: left;
+    font-size: large;
+    background-color:grey;
+
+}
+.displayContainer .detailsContainer .details .goingDate{
+    position:relative;
+    top:5px;
+    width:100%;
+    height:30px;
+    text-align: left;
+    font-size: large;
+    background-color:grey;
+
+}
+.displayContainer .detailsContainer .bookedHotel{
+    position:relative;
+    width:30%;
+    height:200px;
+    margin-left:20%;
+    background-color:orange;
+}
+.displayContainer .detailsContainer .details .button{
+    position:relative;
+    margin-left:50%;
+    width:50%;
+    height:30px;
+}
+.displayContainer .detailsContainer .details .dateEdit{
+    width:100%;
+    height:100px;
+    background-color:cyan;
+}
+.displayContainer .detailsContainer .details .dateEdit input{
+    position:relative;
+    left:10%;
+    top:calc(30% - 15px);
+    width:80%;
+    height:30px;
+}
+.displayContainer .detailsContainer .details .dateEdit button{
+    position:absolute;
+    bottom:20px;
+    right:10px;
+    width:100px;
+    height:30px;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size: large;
+    background-color:green;
+}
+.displayContainer .detailsContainer .details .dateEdit button:hover{
+    background-color:rgb(10, 192, 10);
+}

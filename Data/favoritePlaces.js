@@ -138,6 +138,6 @@ export const places=[{
             animals:{
                 image:'../images/awashAnimal.jpg'
             }
-    }
+    },
+    
 ];
-console.log(places);

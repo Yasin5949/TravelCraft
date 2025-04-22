@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <link rel="stylesheet" href="../CSS/admin.css">
+</head>
+<body>
+    <div class="navBar">
+        <div class="companyName">TravelCraft</div>
+        <div class="searchBar">
+            <div class="type">
+                <label for="user">
+                    User:<input type="radio" id="user" name="type">
+                </label><br>
+                <label for="Place">
+                    Place:<input type="radio" id="Place" name="type">
+                </label>
+            </div>
+            <input type="text" id="search">
+            <button id="searchBtn">Search</button>
+        </div>
+        <div class="admin">
+            <div class="messages">
+                <div class="bell">
+                    <div class="baseBell"></div>
+                    <div class="base"></div>
+                    <div class="handle"></div>
+                    <div class="newMessage"></div>
+                </div>
+            </div>
+        <div class="adminProfile">
+            <div class="profile"></div>
+            <div class="name">Admin</div>
+        </div>
+    </div>
+    </div>
+    <div class="leftPanel">
+        <div class="report"></div>
+        <div class="optionContainer">
+            <button>Booked</button>
+            <button>Canceled</button>
+            <button>Add Guid</button>
+            <button>View Guid</button>
+            <button>Remove Guid</button>
+            <button>Add Place</button>
+            <button>View Place</button>
+            <button>Remove Place</button>
+            <button>Modify Place</button>
+        </div>
+    </div>
+    <div class="operations">
+        <div class="analyticPanel">
+            <div class="topics">
+                <div class="topicName">Top</div>
+                <div class="placeName">Lalibela</div>
+                <div class="imageContainer">
+                    <img src="../images/lalibela.jpg" alt="">
+
+                </div>
+            </div>
+            <div class="topics">
+                <div class="topicName">Least</div>
+                <div class="placeName">Abay</div>
+                <div class="imageContainer">
+                    <img src="../images/abay.jpg" alt="">
+                </div>
+            </div>
+            <div class="topics">
+                <div class="topicName">Rate</div>
+                <div class="topName">Top:100 Booked</div>
+                <div class="leastName">Least:0 Booked</div>
+            </div>
+        </div>
+        <div class="operationField"></div>
+    </div>
+    <div class="messagePanel"></div>
+</body>
+</html>

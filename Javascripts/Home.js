@@ -26,6 +26,33 @@ function mode(){
         modeCounter=0;
     }
 }
+function Menu(){
+    document.querySelector('.menu').style.height='200px';
+    document.querySelector('.menu').innerHTML=`
+    <div class="account">
+            <div class="exit" onclick="Exit();">
+                <div class="line"></div>
+                <div class="lineTwo"></div>
+            </div>
+            <div class="customerName"></div>
+            <div class="profileInMenu"></div>
+        </div>
+        <div class="editProfile">
+            Manage Account
+        </div>
+        <div class="history">
+            History
+        </div>
+        <div class="logOut">
+            LogOut
+        </div>
+    `;
+
+}
+function Exit(){
+       document.querySelector('.menu').style.height='0';
+       document.querySelector('.menu').innerHTML=``;
+    }   
 document.querySelectorAll(".currentlyOn").forEach((button)=>{
     button.addEventListener(`click`,()=>{
         if(button.classList.contains('One')){
@@ -139,10 +166,54 @@ function search(){
             found=true;
             document.querySelector('body').innerHTML+=`
                 <a href='Home.html'><h2>Back</h2></a>
-                <div style="width:45%;height:400px;">
+                <div style="width:80%;height:400px;">
                 <h1>${find}</h1><br>
                 <div class="favorites "><a href='favorite.html'><image src="${place.aboutPlace.image}" style="width:300px;height:400px;border-radius:20px;float:right;"></image></a></div>
                 <div class="favDetail">${place.aboutPlace.discription}</div>
+                </div>
+                <button class="Book" style="width:300px;height:50px;background:orange;border:none;color:white;
+                font-size:larger;border-radius:20px;margin-left:50px" onclick="Book();">Book</button>
+                <div class="formContainer useForm">
+                <form>
+                <div class="Exit" onclick="closeForm();">Exit</div>
+                <h1>Booking</h1>
+                <label>Place:${find}</label><br>
+                <label for="goingDate">GoingDate:</label>
+                <input type="date" id="goingDate"><br>
+                <label for="endingDate">Ending Date:</label>
+                <input type="date" id="endingDate"><br>
+                <label for="hotels">Hotel:</label>
+                <select id="hotel">
+                <option>Select Choice</option>
+                <option>No Hotel</option>
+                <option>Choose Hotel</option>
+                </select><br>
+                <label for="price">Price:${find}</label><br>
+                <label for="payment">Payment:</label>
+                <select id="payment">
+                <option>Cash</option>
+                </select>
+                <div class="display">
+                <div class="hotels"></div>
+                <div class="hotelsForm">
+                <label for="bed">Bed:</label>
+                <select id="bed">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+                <label for="roomType">Type:</label>
+                <select id="roomType">
+                    <option>Economy</option>
+                    <option>VIP</option>
+                </select>
+                </div></div>
+                <button type="button">Book</button>
+                </form>
+                <div class="formImage">
+                <image src="${place.aboutPlace.image}"></image>
+                </div>
                 </div>
             `;
         }
@@ -158,12 +229,20 @@ function search(){
         alert("Please Enter Place To Search");
     }
 }
+function Book(){
+    document.querySelector(".formContainer").classList.remove('useForm');
+    
+}
+function closeForm(){
+    document.querySelector(".formContainer").classList.add('useForm');
+    
+}
 function viewOromia(){
     document.querySelector('body').style.background='url(../images/Awash-park-5.jpg)';
     document.querySelector('body').style.backgroundAttachment='fixed';
 
     document.querySelector('body').innerHTML=`
-                <a href='Home.html' style="color:white;"><h2>Back</h2></a>
+                <a href='Home.html' style="color:white;position:fixed;z-index:2;"><h2>Back</h2></a>
 
     `;
     places.forEach((place)=>{
@@ -206,8 +285,10 @@ window.mode=mode;
 window.search=search;
 window.viewOromia=viewOromia;
 window.viewAmhara=viewAmhara;
-
-
+window.Menu=Menu;
+window.Exit=Exit;
+window.Book=Book;
+window.closeForm=closeForm;
 UpdateFirst();
 UpdateSecond();
 UpdateThird();
