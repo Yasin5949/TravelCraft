@@ -206,7 +206,7 @@ body{
     height:20px;
     color:white;
 }
-.optionContainer .firstGroup .newBooking{
+.optionContainer  button{
     position:relative;
     top:73px;
     width:100%;
@@ -216,62 +216,19 @@ body{
     cursor:pointer;
     font-size: larger;
     color:white;
+    border:none;
+    background:transparent;
 
 }
-.optionContainer .firstGroup .cancelBooking{
-    position:absolute;
-    top:105px;
-    width:100%;
-    height:30px;
-    text-align: left;
-    padding-left:20%;
-    cursor:pointer;
-    font-size: larger;
-    color:white;
+
+.optionContainer .selected{
+    color:black;
+    background:rgb(88, 88, 88);
+    transform:scale(1.4)
 }
-.optionContainer .firstGroup .reFund{
-    position:absolute;
-    top:136px;
-    width:100%;
-    height:30px;
-    text-align: left;
-    padding-left:20%;
-    cursor:pointer;
-    font-size: larger;
-    color:white;
-}
-.optionContainer .firstGroup .canceledBookings{
-    position:absolute;
-    top:167px;
-    width:100%;
-    height:30px;
-    text-align: left;
-    padding-left:20%;
-    cursor:pointer;
-    font-size: larger;
-    color:white;
-}
-.optionContainer .firstGroup .Wages{
-    position:absolute;
-    top:198px;
-    width:100%;
-    height:30px;
-    text-align: left;
-    padding-left:20%;
-    cursor:pointer;
-    font-size: larger;
-    color:white;
-}
-.optionContainer .firstGroup .allHistory{
-    position:absolute;
-    top:229px;
-    width:100%;
-    height:30px;
-    text-align: left;
-    padding-left:20%;
-    cursor:pointer;
-    font-size: larger;
-    color:white;
+.optionContainer  button:hover{
+    background:rgb(88, 88, 88);
+    
 }
 .optionContainer .groupTwo{
     position:absolute;
@@ -301,9 +258,68 @@ body{
 }
 .displayContainer{
     position:fixed;
+    top:10%;
     left:300px;
-    width:70%;
+    width:80%;
+    height:90%;
+    overflow: auto;
+    background:black;
+}
+.displayContainer .placeHolder{
+    position:relative;
+    top:1%;
+    left:2%;
+    margin-right:2%;
+    margin-top:2%;
+    display:inline-block;
+    width:400px;
+    height:300px;
+    background:#ededed
+}
+.displayContainer .placeHolder .placeImage{
+    position:absolute;
+    right:0;
+    width:200px;
+    height:200px;
+    background:blue;
+    transition:0.3s linear;
+}
+.displayContainer .placeHolder .placeImage:hover{
+    width:100%;
     height:100%;
+    z-index:2;
+}
+.displayContainer .placeHolder .placeImage img{
+    width:100%;
+    height:100%;
+}
+.displayContainer .placeHolder .placeName{
+    position:absolute;
+    top:50px;
+    width:200px;
+    height:100px;
+    font-size: 30px;
+    text-align: center;
+    align-content: center;
+    background:grey;
+}
+.displayContainer .placeHolder button{
+    position:absolute;
+    bottom:20px;
+    left:calc(50% - 100px);
+    width:200px;
+    height:50px;
+    font-size: larger;
+    border-radius:10px;
+    background:orange;
+    color:white;
+    border:none;
+}
+.displayContainer .placeHolder button:hover{
+    transform:scale(1.1)
+}
+.displayContainer .placeHolder button:active{
+    background:grey;
 }
 .displayContainer .booked{
     position:absolute;
