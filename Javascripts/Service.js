@@ -77,3 +77,12 @@ function Book(){
         </div>
     `;
 }
+function Role(){
+    fetch('../Backend/htmlGenerate.php')
+    .then(res=>res.json())
+    .then(data=>{
+        document.querySelector('.operationContainer').innerHTML=`
+            <p>${data.Role}</p>
+        `;
+    })
+}
