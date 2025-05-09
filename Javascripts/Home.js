@@ -8,11 +8,8 @@ function mode(){
     document.querySelector("body").style.background="black";
     document.querySelector("body").style.color="white";
     document.querySelectorAll(".currentlyOn").forEach((button)=>{
-        button.style.color="#ededed";
+    button.style.color="#ededed";
     });
-
-
-
     modeCounter=1;
     }
     else{
@@ -171,7 +168,7 @@ function search(){
                 <div class="favorites "><a href='favorite.html'><image src="${place.aboutPlace.image}" style="width:300px;height:400px;border-radius:20px;float:right;"></image></a></div>
                 <div class="favDetail">${place.aboutPlace.discription}</div>
                 </div>
-                <button class="Book" style="width:300px;height:50px;background:orange;border:none;color:white;
+                <button class="Book" id="book" style="width:300px;height:50px;background:orange;border:none;color:white;
                 font-size:larger;border-radius:20px;margin-left:50px" onclick="Book();">Book</button>
                 <div class="formContainer useForm">
                 <form>
@@ -279,7 +276,39 @@ function viewAmhara(){
         }
     })
 }
+function Language(Lang){
+    fetch(`../translations/${Lang}.json`)
+    .then(response => response.json())
+    .then(translations =>{
+        document.getElementById('slogan').innerText = translations.Slogan;
+        document.getElementById('famous').innerText = translations.FamousPlace;
+        document.getElementById('home').innerText =translations.Home;
+        document.getElementById('support').innerText=translations.Support;
+        document.getElementById('about').innerText=translations.About;
+        document.getElementById('service').innerText=translations.Service;
+        document.getElementById('packages').innerText=translations.Packages;
+        document.getElementById('getStart').innerText=translations.GetStarted;
+        document.getElementById('bookbtn').innerText=translations.BookNow;
+        document.getElementById('addis').innerText=translations.Addis;
+        document.getElementById('oromia').innerText=translations.Oromia;
+        document.getElementById('amhara').innerText=translations.Amhara;
+        document.getElementById('somali').innerText=translations.Somali;
+        document.getElementById('tigray').innerText=translations.Tigray;
+        document.getElementById('harar').innerText=translations.Harar;
+        document.getElementById('beni').innerText=translations.Benishangul;
+        document.getElementById('gambela').innerText=translations.Gambela;
+        document.getElementById('south').innerText=translations.South;
+        localStorage.setItem('Language',Lang);
+    });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+    const savedLanguage=localStorage.getItem('Language') || 'English';
+    document.getElementById('language').value=savedLanguage;
+    Language(savedLanguage);
+    console.log(savedLanguage);
+});
 window.preView=preView;
+window.Language=Language;
 window.nextView=nextView;
 window.mode=mode;
 window.search=search;

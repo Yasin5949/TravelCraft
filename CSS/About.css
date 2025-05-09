@@ -1,5 +1,6 @@
 body{
     background-color:#ededed;
+    overflow: hidden;
 }
 .navBar{
     position:fixed;
@@ -51,12 +52,13 @@ body{
 }
 .navBar .last .profile{
     position:absolute;
-    right:1%;
-    width:40px;
-    height:40px;
-    border-radius:50%;
+    top:20px;
+    right:10px;
+    width:60px;
+    height:auto;
     cursor:pointer;
-    background-color:black;
+    color:grey;
+    font-size: large;
 }
 .menu{
     position:fixed;
@@ -254,7 +256,11 @@ body{
     width:30%;
     height:90%;
     border-radius:20px;
-    background-color:grey;
+    overflow: hidden;
+}
+.developersContainer .developer .imageContainer img{
+    width:100%;
+    height:100%;
 }
 .developersContainer .developer .developerInfoContainer{
     position:absolute;

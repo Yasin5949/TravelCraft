@@ -29,37 +29,40 @@ body{
     width:30%;
     height:100%;
 }
-.navBar .middle ul{
+.navBar .middle #ul{
     list-style-type: none;
 }
-.navBar .middle ul li{
+.navBar .middle #ul li{
     display:inline;
     margin-right:20px;
     cursor:pointer;
     font-size: larger;
 }
-.navBar .middle ul li:hover{
+.navBar .middle #ul li:hover{
     color:white;
 }
-.navBar .middle ul li:active{
+.navBar .middle #ul li:active{
     color:red;
 }
-.navBar .middle ul a{
+.navBar .middle #ul a{
     text-decoration: none;
     color:black;
 }
-.navBar .middle ul .activePage{
+.navBar .middle #ul .activePage{
     color:white;
     border-bottom:2px solid black;
 }
 .navBar .last .profile{
     position:absolute;
+    top:20px;
     right:1%;
-    width:40px;
-    height:40px;
-    border-radius:50%;
+    width:80px;
+    height:auto;
+    text-align: center;
+    align-content: center;
+    font-size: large;
     cursor:pointer;
-    background-color:black;
+    color:grey;
 }
 .menu{
     position:fixed;
@@ -68,7 +71,8 @@ body{
     width:200px;
     z-index:5;
     display:grid;
-    background-color:rgba(0, 0, 0, 0.63);
+    background-color:rgba(128, 128, 128, 0.466);
+    backdrop-filter:blur(22px);
     transition:1s;
 }
 .menu .account{
@@ -153,12 +157,13 @@ body{
     border-top:2px solid white;
 }
 .modeContainer{
-    position:absolute;
-    right:10px;
-    top:30px;
+    position:fixed;
+    right:20px;
+    top:70px;
     width:60px;
     height:20px;
     border-radius:20px;
+    z-index:3;
     background-color:gray;
 }
 .toggler{
@@ -214,6 +219,16 @@ body{
     color:#ededed;
     cursor:pointer;
 
+}
+#language{
+    position:fixed;
+    top:20px;
+    width:auto;
+    height:30px;
+    z-index:4;
+    border:none;
+    background:transparent;
+    color:grey;
 }
 
 .rotatingShow{
@@ -288,11 +303,6 @@ body{
     color:transparent;
     z-index:2;
 }
-.rotatingShow .companyName .developer{
-    font-family: 'Times New Roman', Times, serif;
-    max-width: 200px;
-    text-align: left;
-}
 .rotatingShow .companyName .uniqueAnimal{
     background-image:url(../images/waliyaIbex.png);
     width:100%;
@@ -312,6 +322,13 @@ body{
     height:400px;
     margin-bottom:30px;
 
+}
+.marqueeContainer #slogan{
+    margin-bottom:50px;
+    font-size: 50px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+    
 }
 .marquee{
     position:absolute;
@@ -438,7 +455,7 @@ body{
 }
 .favContainer .topic{
     position:absolute;
-    width:400px;
+    width:600px;
     left:calc(50% - 100px);
     top:10%;
     font-size: 50px;

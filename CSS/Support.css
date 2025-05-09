@@ -51,12 +51,13 @@ body{}
 }
 .navBar .last .profile{
     position:absolute;
-    right:1%;
+    top:20px;
+    right:30px;
     width:40px;
     height:40px;
-    border-radius:50%;
     cursor:pointer;
-    background-color:black;
+    color:grey;
+    font-size: large;
 }
 .menu{
     position:fixed;

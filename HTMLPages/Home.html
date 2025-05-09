@@ -10,15 +10,15 @@
     <div class="navBar">
         <div class="first"></div>
         <div class="middle">
-            <ul>
-                <li class="activePage">Home</li>
-                <a href="Service.html"><li>Service</li></a>
-                <a href="Support.html"><li>Support</li></a>
-                <a href="About.html"><li>About</li></a>
+            <ul id="ul">
+                <li class="activePage" id="home">Home</li>
+                <a href="Service.html" ><li id="service">Service</li></a>
+                <a href="Support.html" ><li id="support">Support</li></a>
+                <a href="About.html" ><li id="about">About</li></a>
             </ul>
         </div>
         <div class="last">
-            <div class="profile" onclick="Menu();"></div>
+            <div class="profile" onclick="Menu();">account</div>
         </div>
     </div>
     <div class="menu" ></div>
@@ -31,6 +31,10 @@
             <div class="toggler"></div>
         </div>
     </nav>
+    <select name="lang" id="language" onchange="Language(this.value)">
+        <option value="English">English</option>
+        <option value="Oromic">Afaan Oromoo</option>
+    </select>
     <div class="rotatingShow">
         
         <div class="slider" style="--quantity:12;">
@@ -49,12 +53,6 @@
         </div>
         <div class="companyName">
             <h1 data-content="TRAVELCRAFT">TRAVELCRAFT</h1>
-            <div class="developer">
-                <h2>ETHIOPIAN</h2>
-                <p>
-                    We Are A Touring Organization Currently Oprating In Ethiopia
-                </p>
-            </div>
             <div class="uniqueAnimal"></div>
         </div>
     </div>
@@ -62,65 +60,65 @@
     <div class="customerOne">
         <div class="customerPicture"></div>
         <div class="customerQuote"></div>
-        <a href="register-login.html"><button>Get Started</button></a>
+        <a href="register-login.html"><button id="getStart">Get Started</button></a>
     </div>
     <div class="customerTwo">
         <div class="customerPicture"></div>
         <div class="customerQuote"></div>
 
-        <button>Packages</button>
+        <button id="packages">Packages</button>
     </div>
     <div class="customerThree">
         <div class="customerPicture"></div>
         <div class="customerQuote"></div>
-        <button>Book Now</button>
+        <button id="bookbtn">Book Now</button>
     </div>
 </div>
 <div class="marqueeContainer">
-    <h1 style="margin-bottom:50px;font-size: 50px;
+    <div id="slogan" style="margin-bottom:50px;font-size: 50px;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     
-    ">Find your next destination</h1>
+    " >Find your next destination</div>
     <div class="marquee">
         <div class="destination">
             <img src="../images/nature.jpg" alt="">
-            <div class="region">Addis</div>
+            <div class="region" id="addis">Addis</div>
         </div>
         <div class="destination" onclick="viewOromia();">
             <img src="../images/baleViewFour.jpg">
-            <div class="region">Oromia</div>
+            <div class="region" id="oromia">Oromia</div>
         </div>
         <div class="destination" onclick="viewAmhara();">
             <img src="../images/lalibela.jpg" alt="">
-            <div class="region">Amhara</div>
+            <div class="region" id="amhara">Amhara</div>
         </div>
         <div class="destination">
             <img src="../images/ertale.jpg" alt="">
-            <div class="region">Afar</div>
+            <div class="region" id="afar">Afar</div>
         </div>
         <div class="destination">
-            <div class="region">Somali</div>
+            <div class="region" id="somali">Somali</div>
         </div>
         <div class="destination">
-            <div class="region">Tigray</div>
+            <div class="region" id="tigray">Tigray</div>
         </div>
         <div class="destination">
-            <div class="region">Harar</div>
+            <div class="region" id="harar">Harar</div>
         </div>
         <div class="destination">
-            <div class="region">South</div>
+            <div class="region" id="south">South</div>
         </div>
         <div class="destination">
-            <div class="region">Benishangul</div>
+            <div class="region" id="beni">Benishangul</div>
         </div>
         <div class="destination">
             <img src="../images/Gambela.jpg" alt="">
-            <div class="region">Gambela</div>
+            <div class="region" id="gambela">Gambela</div>
         </div>
     </div>
 </div>
 <div class="favContainer">
-    <h1 class="topic">Famous Places</h1>
+    <h1 class="topic" id="famous">Famous Places</h1>
     <div class="favDetail">
         <h1>Abay</h1>
         <p>

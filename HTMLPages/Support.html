@@ -11,14 +11,14 @@
         <div class="first"></div>
         <div class="middle">
             <ul>
-                <a href="Home.html"><li >Home</li></a>
-                <a href="Service.html"><li>Service</li></a>
-                <li class="activePage">Support</li>
-                <a href="About.html"><li>About</li></a>
+                <a href="Home.html"><li id="home">Home</li></a>
+                <a href="Service.html"><li id="service">Service</li></a>
+                <li class="activePage" id="support">Support</li>
+                <a href="About.html"><li id="about">About</li></a>
             </ul>
         </div>
         <div class="last">
-            <div class="profile" onclick="Menu();"></div>
+            <div class="profile" onclick="Menu();">account</div>
         </div>
     </div>
     <div class="menu" >
@@ -26,10 +26,10 @@
     </div>
     <div class="optionContainer">
         <ul>
-            <li class="choice chat" onclick="Chat();">Chat</li>
-            <li class="choice callBack" onclick="callBack();">CallBack</li>
-            <li class="choice email" onclick="email();">Email Us</li>
-            <li class="choice call" onclick="call();">Call</li>
+            <li class="choice chat" onclick="Chat();" id="chat">Chat</li>
+            <li class="choice callBack" onclick="callBack();" id="callback">CallBack</li>
+            <li class="choice email" onclick="email();" id="emailUs">Email Us</li>
+            <li class="choice call" onclick="call();" id="call">Call</li>
         </ul>
     </div>
     <div class="operations">
@@ -57,7 +57,7 @@
             <div class="innerCloudFive"></div>
         </div>
         <div class="lake"></div>
-        <div class="message">Please Choose Method!</div>
+        <div class="message" id="message">Please Choose Method!</div>
     </div>
     <script src="../javascripts/Support.js"></script>
 </body>

@@ -11,14 +11,14 @@
         <div class="first"></div>
         <div class="middle">
             <ul>
-                <a href="Home.html"><li>Home</li></a>
-                <a href="Service.html"><li>Service</li></a>
-                <a href="Support.html"><li>Support</li></a>
-                <li class="activePage">About</li>
+                <a href="Home.html" ><li id="home">Home</li></a>
+                <a href="Service.html" ><li id="service">Service</li></a>
+                <a href="Support.html"><li id="support">Support</li></a>
+                <li class="activePage" id="about">About</li>
             </ul>
         </div>
         <div class="last">
-            <div class="profile" onclick="Menu();"></div>
+            <div class="profile" onclick="Menu();">account</div>
         </div>
     </div>
     <div class="menu" ></div>
@@ -42,6 +42,7 @@
     <div class="developersContainer">
         <div class="developer">
             <div class="imageContainer">
+                <img src="../images/devanimation'.jpg" alt="">
             </div>
             <div class="developerInfoContainer">
                 <div class="nameContainer">Yasin Shalo</div>
@@ -58,8 +59,8 @@
             <div class="previousWork"></div>
         </div>
         <div class="btnContainer">
-            <button class="previousButton">Prev</button>
-            <button class="nextButton">Next</button>
+            <button class="previousButton" id="prev">Prev</button>
+            <button class="nextButton" id="next">Next</button>
         </div>
     </div>
     <script src="../javascripts/About.js"></script>

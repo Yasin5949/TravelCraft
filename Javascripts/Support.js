@@ -52,7 +52,7 @@ document.querySelectorAll('.choice').forEach((button)=>{
 function Chat(){
     document.querySelector('.operations').innerHTML=`
         <div class="messagePanel">
-            <div class="identifier">Messaging with Admin</div>
+            <div class="identifier" id="chatMessage">Messaging with Admin</div>
             <div class="container">
                 <div class="messages">
                     <div class="text"></div>
@@ -82,7 +82,7 @@ function Chat(){
                 </div>
             </div>
             <textarea name="message" id="messageTyping" placeholder="Send Us A Message"></textarea>
-            <button>Send</button>
+            <button id="MessageBtn">Send</button>
         </div>
     `;
 }
@@ -119,3 +119,22 @@ function call(){
         </div>
     `;
 }
+function lang(Lang){
+    fetch(`../translations/${Lang}.json`).then(response => response.json())
+    .then(translations =>{
+        document.getElementById('home').innerText=translations.Home;
+        document.getElementById('service').innerText=translations.Service;
+        document.getElementById('support').innerText=translations.Support;
+        document.getElementById('about').innerText=translations.About;
+        document.getElementById('chat').innerText=translations.Chat;
+        document.getElementById('callback').innerText=translations.CallBack;
+        document.getElementById('emailUs').innerText=translations.Email;
+        document.getElementById('call').innerText=translations.Call;
+        document.getElementById('message').innerText=translations.Method;
+        document.getElementById('chatMessage').innerText=translations.ChatMessage;
+        document.getElementById('messageBtn').innerText=translations.ChatButton;
+
+    })
+}
+const savedLanguage = localStorage.getItem("Language") || "English";
+lang(savedLanguage);
