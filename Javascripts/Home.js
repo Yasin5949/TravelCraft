@@ -23,7 +23,8 @@ function mode(){
         modeCounter=0;
     }
 }
-function Menu(){
+console.log("hello");
+function Menu(){            
     document.querySelector('.menu').style.height='200px';
     document.querySelector('.menu').innerHTML=`
     <div class="account">
@@ -31,7 +32,7 @@ function Menu(){
                 <div class="line"></div>
                 <div class="lineTwo"></div>
             </div>
-            <div class="customerName"></div>
+            <div class="customerName" id="customerName"></div>
             <div class="profileInMenu"></div>
         </div>
         <div class="editProfile">
@@ -44,7 +45,6 @@ function Menu(){
             LogOut
         </div>
     `;
-
 }
 function Exit(){
        document.querySelector('.menu').style.height='0';
@@ -306,6 +306,36 @@ document.addEventListener('DOMContentLoaded',()=>{
     document.getElementById('language').value=savedLanguage;
     Language(savedLanguage);
     console.log(savedLanguage);
+});
+    
+
+function waitForElement(selector, callback) {
+    let observer = new MutationObserver((mutations) => {
+        if (document.querySelector(selector)) {
+            observer.disconnect(); // Stop observing once the element is found
+            callback(document.querySelector(selector));
+        }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+}
+
+// Example usage: Wait for `#userInfo` to be added
+waitForElement("customerName", (element) => {
+    fetch("http://localhost/TravelCraft/Backend/getUser.php") 
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("User Data:", data); 
+    
+    element.innerText=`${data.firstName}`;
+    
+  })
+  .catch(error => console.error("Error fetching user data:", error));
 });
 window.preView=preView;
 window.Language=Language;

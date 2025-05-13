@@ -79,7 +79,7 @@ function Book(){
     `;
 }
 function changeLang(Lang){
-    fetch(`/translations/${Lang}.json`)
+    fetch(`../translations/${Lang}.json`)
     .then(response => response.json())
     .then(translations => {
         document.getElementById('home').innerText=translations.Home;
@@ -113,7 +113,7 @@ function displayPlaces(){
                 <div class="pricing">
                     <div class="phrase">from</div>
                     <div class="priceAmount">$665</div>
-                    <div class="bookBtn"  onclick="bookForm()">Book</div>
+                    <button class="bookBtn" data-value="${places.aboutPlace.placeName}" onclick="bookForm(this)">Book</button>
                     <div class="guidContainer">
                     ${places.aboutPlace.placeName}</div>
                 </div>
@@ -123,22 +123,22 @@ function displayPlaces(){
         </div>
         `;})
     }
-function bookForm(){
+function bookForm(placeName){
     const form=document.getElementById('bookForm');
     if(form){
         form.remove();
     }
     document.querySelector('body').innerHTML+=`
-    <form action=""id="bookForm">
+    <form action="../Backend/bookings.php" method="POST" id="bookForm">
         <h1>Book</h1>
         <label for="Place">
-            Place:
+            Place:${placeName.getAttribute("data-value")}
         </label><br>
         <label for="startDate">
-            GoingDate:<input type="date" id="startDate">
+            GoingDate:<input type="date" id="startDate" name="BookedFor">
         </label><br>
         <label for="endDate">
-            EndingDate:<input type="date" id="endDate">
+            EndingDate:<input type="date" id="endDate" name="endingDate">
         </label><br>
         <label for="Hotel">
             Hotel:
@@ -439,8 +439,64 @@ function allHistory(){
         </div>
     `;
 }
+let a=document.querySelector('.customerName');
+if(a){
+console.log(a);
+}
+function getUser(){
+fetch("http://localhost/TravelCraft/Backend/getUser.php") 
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("User Data:", data); 
+    document.getElementById('servisProfile').innerHTML+=`
+        <h1>${data.firstName}</h1>
+        <p>${data.Email}</p>
+    `;
+    if(a){
+        console.log(a);
+        a.innerHTML=`${data.firstName}`
+    }
+  })
+  .catch(error => console.error("Error fetching user data:", error));
+}
+function getBooking(){
+fetch("http://localhost/TravelCraft/Backend/bookingHistory.php")
+  .then(response => response.json())
+  .then(data => {
+    if (data.error) {
+      document.querySelector(".displayContainer").innerHTML = `<h2>No bookings found. You haven't made any reservations yet.</h2>`;
+      return;
+    }
+
+    console.log("Booking History:", data.bookings); 
+
+    let bookingHTML = "<h2>Booking History</h2><ul>";
+    data.bookings.forEach(booking => {
+      bookingHTML += `
+        <li>
+          <strong>Booking ID:</strong> ${booking.bookingID} <br>
+          <strong>Destination:</strong> ${booking.destination} <br>
+          <strong>Date:</strong> ${booking.bookingDate} <br>
+          <strong>Status:</strong> ${booking.status} <br>
+        </li><hr>
+      `;
+    });
+    bookingHTML += "</ul>";
+
+  })
+  .catch(error => console.error("Error fetching booking history:", error));
+}
+getUser()
 displayPlaces();
+
 window.displayPlaces=displayPlaces;
+window.getBooking=getBooking;
+window.getUser=getUser;
 window.canceledBooking=canceledBooking;
 window.Book=Book;
 window.Menu=Menu;

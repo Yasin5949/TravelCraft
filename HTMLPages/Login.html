@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/register-login.css">
+</head>
+<body>
+    <div class="displayContainer" >
+        <image src="../images/mauntains.jpg" class="comercialImages"></image>
+        <div class="introLeft"></div>
+        <div class="introMiddleTop"></div>
+        
+    </div>
+    <div class="formContainer">
+        <form action="../Backend/Login.php" method="POST" id="loginUser">
+            <h1>Login</h1>
+            <label><legend>Email</legend>
+                <input type="text" placeholder="" name="Email">
+            </label>
+            <label><legend>Password</legend>
+                <input type="password" placeholder="" name="password">
+            </label><br>
+            <a href="#">Forget Password</a>
+            <input type="submit" class="LoginBtn" id="loginBtn" style="width:300px;height:40px;" value="logIn">
+        </form>
+        <div class="message">
+            <h2>WELCOME!</h2>
+            <p>we are dedicated in providing a clear and fast service to our users </p>
+            <a href="Register.html"><button class="registerBtn" id="loginBtn">Create Account</button></a>
+        </div>
+    </div>
+    <script src="../Javascripts/register-login.js"></script>
+</body>
+</html>

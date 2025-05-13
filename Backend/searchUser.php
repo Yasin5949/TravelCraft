@@ -7,7 +7,7 @@ $dbname = "TravelCraftDB";
 $conn = new mysqli($host, $username, $password, $dbname);
 if (isset($_GET['query'])) {
     $query = $_GET['query'];
-    $sql = "SELECT * FROM Booking WHERE UserID LIKE ?";
+    $sql = "SELECT * FROM Users WHERE Email LIKE ?";
     $stmt = $conn->prepare($sql);
     $searchTerm = "%" . $query . "%";
     $stmt->bind_param("s", $searchTerm);

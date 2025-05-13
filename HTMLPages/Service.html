@@ -25,13 +25,11 @@
     <div class="menu" ></div>
     <div class="optionContainer">
         <div class="firstGroup">
-            <div class="profileContainer">
-                <div class="profileInService"></div>
-                <h1>Yasin</h1>
-                <p>yasin2ashalo@gmail.com</p>
+            <div class="profileContainer" id="servisProfile">
+                <div class="profileInService" ></div>
             </div>
             <button class="service selected" id="book" onclick="displayPlaces()">Book</button>
-            <button class="service " onclick="Book();" id="booked">Booked</button>
+            <button class="service " onclick="getBooking();" id="booked">Booked</button>
             <button class="service" id="cancel" onclick="cancelBooking();">Cancel Booking</button>
             <button class="service" id="refund">ReFund</button>
             <button class="service" id="canceled" onclick="canceledBooking()">Canceled Bookings</button>
@@ -39,13 +37,10 @@
             <button class="service" id="history" onclick="allHistory()">All History</button>
         </div>
         <div class="groupTwo">
-            <button class="service" id="terms" onclick="terms();">Terms & Conditions</butt>
+            <button type="button" class="service" id="terms" onclick="terms();">Terms & Conditions</button>
         </div>
     </div>
-    <div class="displayContainer">
-        
-        
-    </div>
+    <div class="displayContainer"></div>
     
     
     <script type="module" src="../javascripts/Service.js"></script>

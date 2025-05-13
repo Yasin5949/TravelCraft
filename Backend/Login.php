@@ -1,27 +1,29 @@
 <?php
 session_start();
-require_once "dbConnection.php";
+$host = "localhost";
+$username = "root";
+$password = "";
+$db = "TravelCraftDB";
+$conn = new mysqli($host, $username, $password, $db);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $Email = $_POST['email'];
-    $Password = Password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $db = new Database();
-    $conn = $db->getConnection();
-    $stmt = $conn->prepare("select UserId,hashedPassword from users where Email=?");
+    $Email = $_POST["Email"];
+    $password = $_POST["password"];
+    $stmt = $conn->prepare("SELECT * FROM Users WHERE Email=?");
     $stmt->bind_param("s", $Email);
     $stmt->execute();
-    $stmt->store_result();
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($UserId, $hashedPassword);
-        $stmt->fetch();
-        if (password_verify($password, $hashedPassword)) {
-            $_SESSION["UserId"] = $UserId;
-            echo "Login successful";
-        } else {
-            echo "invalid password";
-        }
-    } else {
-        echo "user not found";
-    }
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
     $stmt->close();
-    $conn->close();
+
+    if ($user && password_verify($password, $user["hashedPassword"])) {
+        $_SESSION['UserID'] = $user['UserID'];
+        $_SESSION['firstName'] = $user['firstName'];
+        $_SESSION['lastName'] = $user['lastName'];
+        $_SESSION['Email'] = $user['Email'];
+        echo "User Logged In";
+
+        // Redirect to admin page
+        header('Location: ../HTMLPages/Home.html');
+        exit(); // Ensure script stops after redirection
+    }
 }

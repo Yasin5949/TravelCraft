@@ -12,14 +12,14 @@
         <div class="searchBar">
             <div class="type">
                 <label for="user">
-                    User:<input type="radio" id="user" name="type">
+                    User:<input type="radio" id="user" name="type" value="User">
                 </label><br>
                 <label for="Place">
-                    Place:<input type="radio" id="Place" name="type">
+                    Place:<input type="radio" id="Place" name="type" value="Place">
                 </label>
             </div>
             <input type="text" id="search">
-            <button id="searchBtn">Search</button>
+            <button id="searchBtn" onclick="Search();">Search</button>
         </div>
         <div class="admin">
             <div class="messages">
@@ -44,7 +44,7 @@
             <button>Add Guid</button>
             <button>View Guid</button>
             <button>Remove Guid</button>
-            <button>Add Place</button>
+            <button onclick="addPlace();">Add Place</button>
             <button>View Place</button>
             <button>Remove Place</button>
             <button>Modify Place</button>
@@ -73,8 +73,12 @@
                 <div class="leastName">Least:0 Booked</div>
             </div>
         </div>
-        <div class="operationField"></div>
+        <div class="operationField">
+            
+            
+        </div>
     </div>
     <div class="messagePanel"></div>
+    <script src="../javascripts/admin.js"></script>
 </body>
 </html>

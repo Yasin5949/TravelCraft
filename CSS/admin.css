@@ -254,6 +254,7 @@ body{
     left:2%;
     width:96%;
     height:70%;
+    overflow: auto;
     background:snow;
     border-radius:20px;
 }
@@ -265,4 +266,197 @@ body{
     height:90%;
     border-top-left-radius:20px;
     background:#ededed;
+}
+.operationField #addTour{
+    position:absolute;
+    left:calc(50% - 200px);
+    top:calc(50% - 200px);
+    text-align: center;
+    width:400px;
+    height:400px;
+    color:#ededed;
+    background:#252525;
+    border-radius:10px;
+}
+.operationField #addTour input{
+    width:60%;
+    height:30px;
+    border:none;
+    border-bottom:2px solid #ededed;
+    background:none;
+    margin-bottom:20px;
+}
+.operationField #addTour textarea{
+    position:relative;
+    width:70%;
+    height:50px;
+    margin-bottom:20px;
+    text-align: center;
+    align-content: center;
+}
+.operationField #addTour #TourImage{
+    border:none;
+}
+.operationField #addTour #addBtn{
+    width:60%;
+    height:50px;
+    border:none;
+    color:#ededed;
+    background:green;
+    border-radius:10px;
+    font-size: larger;
+}
+.operationField #addTour #region{
+    width:50%;
+    height:20px;
+    margin-bottom:20px;
+    background:#ededed;
+    color:#252525;
+    border:none;
+    border-radius:2px;
+}
+.operationField .user{
+    position:relative;
+    left:20%;
+    top:20px;
+    margin-bottom:20px;
+    width:60%;
+    height:100px;
+    border-radius:20px;
+    background:black;
+}
+.operationField .user .userProfile{
+    position:absolute;
+    width:80px;
+    height:80px;
+    background:#252525;
+    border-radius:50%;
+    overflow: hidden;
+}
+.operationField .user .userProfile img{
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+.operationField .user .delete{
+    position:absolute;
+    top:20%;
+    right:20px;
+    width:100px;
+    height:60%;
+    color:#ededed;
+    background:red;
+    font-size: 25px;
+    text-align: center;
+    align-content: center;
+    border-radius:20px;
+}
+.operationField .user .detail{
+    position:absolute;
+    top:20%;
+    right:125px;
+    width:100px;
+    height:60%;
+    border-radius:20px;
+    text-align: center;
+    align-content: center;
+    color:#ededed;
+    font-size: 25px;
+    background:green;
+}
+.operationField .user .emailContainer{
+    position:absolute;
+    bottom:0;
+    left:5px;
+    width:200px;
+    height:30px;
+    align-content: center;
+    text-align: center;
+    color:#ededed;
+}
+.operationField .userDetail{
+    position:absolute;
+    left:5%;
+    bottom:0;
+    width:90%;
+    height:430px;
+    overflow: auto;
+    background:cyan;
+}
+.operationField .userDetail button{
+    position:relative;
+    top:30px;
+    border:none;
+    font-size: larger;
+    background:#252525;
+    color:#ededed;
+    width:80%;
+    height:50px;
+}
+.operationField .userDetail button:hover{
+    transform:scale(1.1);
+}
+.operationField .userDetail .back{
+    position:sticky;
+    top:0;
+    z-index:2;
+    width:60px;
+    height:30px;
+    background:rgb(141, 133, 133);
+    text-align: center;
+    align-content: center;
+    color:#ededed;
+    cursor:pointer;
+}
+.operationField .userDetail .bookedContainer{
+    position:relative;
+    left:10%;
+    top:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+    width:80%;
+    height:100px;
+    background:black;
+}
+.operationField .userDetail .bookedContainer .tourImage{
+    position:absolute;
+    left:10px;
+    top:10%;
+    width:30%;
+    height:80%;
+    background:grey;
+}
+.operationField .userDetail .bookedContainer .tourImage img{
+    width:100%;
+    height:100%;
+}
+.operationField .userDetail .bookedContainer .tourName{
+    position:absolute;
+    right:10px;
+    width:60%;
+    height:60%;
+    font-size:30px;
+    text-align: center;
+    align-content: center;
+    color:#ededed;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.operationField .userDetail .bookedContainer .bookedOn{
+    position:absolute;
+    bottom:5%;
+    left:35%;
+    width:30%;
+    height:35%;
+    align-content: center;
+    font-size: medium;
+    color:#ededed;
+}
+.operationField .userDetail .bookedContainer .bookedFor{
+    position:absolute;
+    bottom:5%;
+    right:10px;
+    width:30%;
+    height:35%;
+    align-content: center;
+    color:#ededed
 }
