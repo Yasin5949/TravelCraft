@@ -1,31 +1,3 @@
-import { places } from '../Data/favoritePlaces.js';
-function Menu(){
-    document.querySelector('.menu').style.height='200px';
-    document.querySelector('.menu').innerHTML=`
-    <div class="account">
-            <div class="exit" onclick="Exit();">
-                <div class="line"></div>
-                <div class="lineTwo"></div>
-            </div>
-            <div class="customerName"></div>
-            <div class="profileInMenu"></div>
-        </div>
-        <div class="editProfile">
-            Manage Account
-        </div>
-        <div class="history">
-            History
-        </div>
-        <div class="logOut">
-            LogOut
-        </div>
-    `;
-
-}
-function Exit(){
-       document.querySelector('.menu').style.height='0';
-       document.querySelector('.menu').innerHTML=``;
-}  
 function unSelect(){
     document.querySelectorAll('.service').forEach((button)=>{
         button.classList.remove('selected');
@@ -37,47 +9,6 @@ document.querySelectorAll('.service').forEach((button)=>{
     button.classList.add('selected');
 })
 })
-function Book(){
-    document.querySelector('.displayContainer').innerHTML=`
-        <div class="booked">
-            <div class="placeImage ">
-                <img src="../images/abay.jpg" alt="">
-            </div>
-            <div class="placeName">ABAY</div>
-            <div class="note"></div>
-        </div>
-        <div class="detailsContainer">
-            <div class="details">
-                <div class="bookedDate">Booked ON: 12/12/2025</div>
-                <div class="goingDate">Going ON: 12/12/2025</div>
-                <button class="button">Change Date</button>
-                <div class="dateEdit">
-                    <input type="date">
-                    <button>Apply</button>
-                </div>
-            </div>
-            <div class="bookedHotel"></div>
-        </div><div class="booked">
-            <div class="placeImage ">
-                <img src="../images/abay.jpg" alt="">
-            </div>
-            <div class="placeName">ABAY</div>
-            <div class="note"></div>
-        </div>
-        <div class="detailsContainer">
-            <div class="details">
-                <div class="bookedDate">Booked ON: 12/12/2025</div>
-                <div class="goingDate">Going ON: 12/12/2025</div>
-                <button class="button">Change Date</button>
-                <div class="dateEdit">
-                    <input type="date">
-                    <button>Apply</button>
-                </div>
-            </div>
-            <div class="bookedHotel"></div>
-        </div>
-    `;
-}
 function changeLang(Lang){
     fetch(`../translations/${Lang}.json`)
     .then(response => response.json())
@@ -91,152 +22,217 @@ function changeLang(Lang){
         document.getElementById('cancel').innerText=translations.CancelBook;
         document.getElementById('canceled').innerText=translations.CanceledBooking;
         document.getElementById('refund').innerText=translations.ReFund;
-        document.getElementById('expense').innerText=translations.Wages;
-        document.getElementById('history').innerText=translations.AllHistory;
         document.getElementById('terms').innerText=translations.Terms;
         localStorage.setItem('Language',Lang);
     })
 };
 const savedLanguage=localStorage.getItem('Language') || 'English';
 changeLang(savedLanguage);
-const theme=localStorage.getItem('Theme') || 'hello';
-document.querySelector('body').style.background=theme;
+
 function displayPlaces(){
-    document.querySelector('.displayContainer').innerHTML=``;
-    places.forEach((places)=>{
-        document.querySelector('.displayContainer').innerHTML+=`
+document.querySelector('.displayContainer').innerHTML = "";
+
+fetch('../Backend/displayPlaces.php')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP Error ${response.status}`);
+        }
+        return response.text();
+    })
+    .then(text => {
+        if (!text.trim()) {
+            throw new Error("Empty response from server");
+        }
+        return JSON.parse(text);
+    })
+    .then(data => {
+        let output = "";
+
+        if (data.length > 0) {
+            data.forEach(place => {
+                output += `
             <div class="placeHolder">
             <div class="placeName">
                 <div class="description">
-                    ${places.aboutPlace.discription}
+                    ${place.Descriptions}
                 </div>
                 <div class="pricing">
                     <div class="phrase">from</div>
-                    <div class="priceAmount">$665</div>
-                    <button class="bookBtn" data-value="${places.aboutPlace.placeName}" onclick="bookForm(this)">Book</button>
+                    <div class="priceAmount">$${place.TourPrice}</div>
+                    <button class="bookBtn"  onclick="bookForm('${place.TourName}','${place.TourID}','${place.TourPrice}')">Book</button>
                     <div class="guidContainer">
-                    ${places.aboutPlace.placeName}</div>
+                    ${place.TourName}</div>
                 </div>
             </div>
             <div class="placeImage">
-            <img src='${places.aboutPlace.image}' class='places'><img></div>
+            <img src='../${place.TourImage}' class='places'><img></div>
         </div>
-        `;})
-    }
-function bookForm(placeName){
+                `;
+            });
+        } else {
+            output = `<h1>No Result Found</h1>`;
+        }
+
+        document.querySelector('.displayContainer').innerHTML = output;
+    })
+    .catch(error => console.log("Error fetching data:", error));
+}
+function bookForm(placeName,Id,Price){
     const form=document.getElementById('bookForm');
     if(form){
         form.remove();
     }
-    document.querySelector('body').innerHTML+=`
-    <form action="../Backend/bookings.php" method="POST" id="bookForm">
+    document.querySelector('body').insertAdjacentHTML('beforeend',`
+    <form id="bookForm">
         <h1>Book</h1>
-        <label for="Place">
-            Place:${placeName.getAttribute("data-value")}
+        <label for="Place" >
+            Place:${placeName}
         </label><br>
+        <label for="Place" class="Price">
+            Daily Cost:$${Price}
+        </label><br>
+        <input type="hidden" name="Total" value="${Price}">
+        <input type="hidden" name="TourID" value="${Id}">
         <label for="startDate">
             GoingDate:<input type="date" id="startDate" name="BookedFor">
         </label><br>
         <label for="endDate">
-            EndingDate:<input type="date" id="endDate" name="endingDate">
+            EndingDate:<input type="date" id="endDate" name="endingDate" onchange="calculateTour(${Price})">
         </label><br>
         <label for="Hotel">
             Hotel:
             <select name="hotels" id="Hotel">
-                <option>Yes</option>
                 <option>No</option>
             </select>
         </label><br>
         <label for="paymentMethod">
             paymentMethod:
-            <select name="hotels" id="paymentMethod">
-                <option>one</option>
+            <select name="payments" id="paymentMethod">
+                <option value="1">Cash</option>
             </select>
         </label>
         <div class="hotelDisplay"></div>
-        <button id="confirmBook">Book</button>
+        <button type="button" id="confirmBook" onclick="sendInfo()">Book</button>
         <div class="exit" onclick="removeForm()">Exit</div>
     </form>
-    `;
+    `);
+}
+function calculateTour(Price){
+    const date1=new Date(document.getElementById('startDate').value);
+    const date2=new Date(document.getElementById('endDate').value);
+    if(!date1 || !date2){
+        alert("fill the date");
+        return;
+    }
+    const diffInMillisecond=date2-date1;
+    const dayDiff=diffInMillisecond / (1000 * 60 * 60 * 24);
+    let value=parseInt(Price);
+    const result = dayDiff * value;
+    document.querySelector('.Price').innerText="Total Cost: $"+result}
+function sendInfo(){
+    let form=document.getElementById('bookForm');
+    let data=new FormData(form);
+    const date1=document.getElementById('startDate').value;
+    const date2=document.getElementById('endDate').value;
+    if(!date1 || !date2){
+        alert("fill the date");
+        return;
+    }
+    fetch("../Backend/book.php",{
+        method:"POST",
+        body:data
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data.message === "Please Enter The date"){
+            document.querySelector('.hotelDisplay').style.color="red";
+            document.querySelector('.hotelDisplay').style.fontSize="30px";
+        }
+        else if(data.message === "Please Enter Valid Schedule!"){
+            document.querySelector('.hotelDisplay').style.color="red";
+            document.querySelector('.hotelDisplay').style.fontSize="30px";
+        }else{
+            document.querySelector('.hotelDisplay').style.color="green";
+            document.querySelector('.hotelDisplay').style.fontSize="30px";
+        }
+        document.querySelector('.hotelDisplay').innerHTML=`${data.message}`;
+    }).catch(error => console.error("Error:", error));
+
 }
 function removeForm(){
     const form=document.getElementById('bookForm');
     form.remove();
 }
 function canceledBooking(){
-    document.querySelector('.displayContainer').innerHTML=`
+    let canceledFound=false;
+    document.querySelector('.displayContainer').innerHTML="";
+    let result="";
+    fetch('../Backend/bookingHistory.php')
+    .then(response=>response.json())
+    .then(data=>{
+        data.forEach(user=>{ 
+        if(user.BookingStatus === 'Canceled'){
+        result+=`
         <div class="canceledContainer">
-            <div class="detailsMenu" onclick="viewDetail()">
+            <div class="detailsMenu" onclick="viewDetail('${user.BookingID}')">
                 View
             </div>
             <div class="canceledImageContainer" >
-                <img src="../images/abay.jpg" alt="">
+                <img src="../${user.TourImage}" alt="${user.TourName}">
             </div>
             <div class="canceledPlaceName">
-                Lalibela
+                ${user.TourName}
             </div>
             <div class="canceledLabel">
-                Canceled ON
+                Booked ON
             </div>
             <div class="canceledDate">
-                00/00/0000
+                ${user.BookedAt}
             </div>
         </div>
-    `;
-}
-function cancelBooking(){
-    document.querySelector('.displayContainer').innerHTML=`
-        <div class="cancelContainer">
-            <div class="imageToCancel">
-                <img src="../images/Awash-park-5.jpg" alt="">
-            </div>
-            <div class="cancelName">
-                Awash
-            </div>
-            <div class="dateContainer">
-                <div class="label">Booked On:</div>
-                <div class="BookedDate">00/00/0000</div>
-            </div>
-            <textarea placeholder="Reason" id="reason"></textarea>
-            <button id="cancelBooking">Cancel</button>
-        </div>
-    `;
+    `; canceledFound=true;
+        }
+    });
+    document.querySelector('.displayContainer').innerHTML=result;
+    if(!canceledFound){
+        document.querySelector('.displayContainer').innerHTML=`<h1>You Have No Canceled Booking</h1>`;
+    }
+    })   .catch(error => console.error("Error:", error));
+
 }
 let viewed=1;
-function viewDetail(){
+function viewDetail(id){
+    id=parseInt(id,10);
 document.querySelectorAll('.detailsMenu').forEach(menu=>{
     menu.addEventListener('click',()=>{
     let container = menu.parentElement;
+    fetch(`../Backend/getReason.php?query=${id}`)
+        .then(response=>response.json())
+        .then(data=>{
+            console.log(data);
     if(viewed === 0){
         container.style.height="150px";
-        container.innerHTML=`
-            <div class="detailsMenu" onclick="viewDetail()">
-                View
-            </div>
-            <div class="canceledImageContainer" >
-                <img src="../images/abay.jpg" alt="">
-            </div>
-            <div class="canceledPlaceName">
-                Lalibela
-            </div>
-            <div class="canceledLabel">
-                Canceled ON
-            </div>
-            <div class="canceledDate">
-                00/00/0000
-            </div>
-        `;
         menu.innerText='view';
-        viewed=1;
+                viewed=1;
+        document.getElementById('reason').remove();
     }
     else{
     menu.innerText='Close';
     container.style.height='400px';
-    container.innerHTML+=`
-        <div class="reason"></div>
-    `;
-    viewed=0;
+
+    data.forEach(user=>{
+                container.innerHTML+=`
+                <div class="reason" style="color:#ededed;" id="reason">${user.Reason}</div>
+                    `;
+                    viewed=0;
+                
+            })
+            
+            
+        
+    
     }
+    })
     });
 });
 }
@@ -315,145 +311,23 @@ function terms(){
 
     `;
 }
-function Expense(){
-    document.querySelector('.displayContainer').innerHTML=`
-        <div class="totalTourExpense">
-            <div class="tourExpensePercent"></div>
-            <div class="totalTourExpenseCalculated">Total Tour :$23456789</div>
-        </div>
-        <div class="totalHotelExpense">
-            <div class="totalHotelExpenseCalculated">Total Hotel :$23456789</div>
-            <div class="hotelExpensePercent"></div>
-        </div>
-        <div class="overAllExpense">
-            <div class="overAllExpenseCalculated">OverAll :$23456789</div>
-            <div class="overAllExpensePercent"></div>
-        </div>
-        <div class="tourExpense">
-            <div class="tourExpenseLabel">
-                Tour Expense
-            </div>
-            <div class="tourExpenseDisplay">
-                <div class="individualTour">
-                    <div class="tourImage">
-                        <img src="../images/baleViewFour.jpg" alt="">
-                    </div>
-                    <div class="placeAndExpense">
-                        <div class="placeNameExpense">
-                            Bale Mountains
-                        </div>
-                        <div class="totalDurations">
-                            From:<strong> 00/00/000</strong><br>
-                            To:<strong>   00/00/000</strong>
-                            <div class="totalCost">$100000</div>
-                        </div>
-                    </div>
-                </div>
-                
-
-            </div>
-        </div>
-        <div class="hotelExpense">
-            <div class="hotelExpenseLabel">
-                Hotel Expense
-            </div>
-            <div class="hotelExpenseDisplay">
-                <div class="individualTour">
-                    <div class="tourImage">
-                        <img src="../images/baleViewFour.jpg" alt="">
-                    </div>
-                    <div class="placeAndExpense">
-                        <div class="placeNameExpense">
-                            Bale Lodge
-                        </div>
-                        <div class="totalDurations">
-                            From:<strong> 00/00/000</strong><br>
-                            To:<strong>   00/00/000</strong>
-                            <div class="totalCost">$100000</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            </div>
-        </div>
-    `;
-}
-function allHistory(){
-    document.querySelector('.displayContainer').innerHTML=`
-        <div class="bookedHistory">
-            <div class="HistoryLabel">
-                Booked
-            </div>
-            <div class="historyDisplay">
-                <div class="individualHistory">
-                    <div class="historyImage">
-                        <img src="../images/baleViewFour.jpg" alt="">
-                    </div>
-                    <div class="historyName">
-                        Bale Mountains
-                    </div>
-                    <div class="historyDate">
-                        Booked On:<strong>00/00/0000</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="canceledHistory">
-            <div class="HistoryLabel">
-                Canceled
-            </div>
-            <div class="historyDisplay">
-                <div class="individualHistory">
-                    <div class="historyImage">
-                        <img src="../images/baleViewThree.jpg" alt="">
-                    </div>
-                    <div class="historyName">
-                        Bale Mountains
-                    </div>
-                    <div class="historyDate">
-                        Canceled On:<strong>00/00/0000</strong>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="updatedHistory">
-            <div class="HistoryLabel">
-                Updated
-            </div>
-            <div class="historyDisplay">
-                <div class="individualHistory">
-                    <div class="historyImage">
-                        <img src="../images/baleViewTwo.jpg" alt="">
-                    </div>
-                    <div class="historyName">
-                        Bale Mountains
-                    </div>
-                    <div class="historyDate">
-                        Updated On:<strong>00/00/0000</strong>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    `;
-}
 let a=document.querySelector('.customerName');
 if(a){
 console.log(a);
 }
 function getUser(){
-fetch("http://localhost/TravelCraft/Backend/getUser.php") 
+fetch("../Backend/getUser.php") 
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     return response.json();
-  })
+})
   .then(data => {
-    console.log("User Data:", data); 
     document.getElementById('servisProfile').innerHTML+=`
+    <div class="profileInService" >
+                    <img src="../${data.ProfilePicture}" alt="">
+    </div>
         <h1>${data.firstName}</h1>
         <p>${data.Email}</p>
     `;
@@ -461,11 +335,10 @@ fetch("http://localhost/TravelCraft/Backend/getUser.php")
         console.log(a);
         a.innerHTML=`${data.firstName}`
     }
-  })
-  .catch(error => console.error("Error fetching user data:", error));
+  }).catch(error => console.log("Error fetching user data:", error));
 }
 function getBooking(){
-fetch("http://localhost/TravelCraft/Backend/bookingHistory.php")
+fetch("../Backend/bookingHistory.php")
   .then(response => response.json())
   .then(data => {
     if (data.error) {
@@ -492,19 +365,196 @@ fetch("http://localhost/TravelCraft/Backend/bookingHistory.php")
   .catch(error => console.error("Error fetching booking history:", error));
 }
 getUser()
-displayPlaces();
+function changeProfile(){
+    let newProfile=document.querySelector('.changeProfile');
+    let formData=new FormData(newProfile);
+    let Profile=document.querySelector('.profile').value;
+    fetch("../Backend/handleProfileChange.php",{
+        method:"POST",
+        body:formData
+    }).then(
+        response=>response.text()
+    ).then(data=>{
+        if(!data.error){
+            console.log(Profile)
+                    document.querySelector(".profile").innerHTML=`
+                <img src="../UserPicture/${Profile}" alt="">
+                <form class="changeProfile">
+                <input type="file" id="profile" name="userProfile">
+                </form>
+                <div class="confirm" onclick="accountManage()">Change</div>
+            
+        `;
+        }
 
-window.displayPlaces=displayPlaces;
-window.getBooking=getBooking;
-window.getUser=getUser;
-window.canceledBooking=canceledBooking;
-window.Book=Book;
-window.Menu=Menu;
-window.Exit=Exit;
-window.allHistory=allHistory;
-window.Expense=Expense;
-window.terms=terms;
-window.viewDetail=viewDetail;
-window.cancelBooking=cancelBooking;
-window.bookForm=bookForm;
-window.removeForm=removeForm;
+    })
+    .catch(error=>console.log(error));
+
+}
+function accountManage(){
+    fetch("../Backend/getUser.php")
+    .then(response=>
+        {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  }
+    )
+    .then(data=>{
+        document.querySelector('.displayContainer').innerHTML=`
+        <div class="profileContainer">
+            <div class="profile">
+                <img src="../${data.ProfilePicture}" alt="">
+            <form class="changeProfile">
+                <input type="file" id="profile" name="userProfile">
+            </form>
+            <div class="confirm" onclick="changeProfile()">Change</div>
+            </div>
+        </div>
+        <div class="userInfo">
+            <label for="firstName">
+                fistName:<div class="firstName" id="fistName">${data.firstName}</div>
+            </label>
+            <label for="">
+                lastName:<div class="firstName" id="fistName">${data.lastName}</div>
+            </label>
+            <label for="firstName">
+                Email:<div class="firstName" id="fistName">${data.Email}</div>
+            </label>
+        </div>
+        <div id="Logout" onclick="logOut()">Log-OUt</div>
+        `;
+    })
+}
+function logOut(){
+     fetch("../Backend/LogOut.php", {
+        method: "POST"
+    })
+    .then(response => response.json())
+
+    .then(data => {
+        if (data.success) {
+            window.location.href = "login.html"; 
+            
+        }else{
+            alert("Logout failed: " + data.error);
+        }
+    })
+
+    .catch(error => console.error("Error:", error));
+}
+function bookedTours(){
+    fetch("../Backend/bookingHistory.php")
+    .then(response=>response.json())
+    .then(data=>{
+        document.querySelector('.displayContainer').innerHTML=``;
+        if(data.length > 0){
+            data.forEach(user=>{
+            document.querySelector('.displayContainer').innerHTML+=`
+                    <div class="bookedContainer">
+            <div class="bookedImage">
+                <img src="../${user.TourImage}" alt="">
+            </div>
+            <div class="detailContainer">
+                <div id="bookingStatus">${user.BookingStatus}</div>
+                <div class="nameContainer">${user.TourName}</div>
+                <div class="bookedOn">Booked On: ${user.BookedAt}</div>
+                <div class="bookedFor">Booked For: ${user.BookedFor}</div>
+                <div class="endOn">End On: ${user.EndingDate}</div>
+            </div>
+        </div>
+            `;
+            })
+        }else{
+            document.querySelector('.displayContainer').innerHTML=`<h1>No Booking Found</h1>`
+        }
+    })    .catch(error => console.error("Error:", error));
+
+}
+function cancelBooking(){
+    document.querySelector('.displayContainer').innerHTML="";
+    let result="";
+    fetch('../Backend/bookingHistory.php')
+    .then(response=>response.json())
+    .then(data=>{
+        data.forEach(user=>{
+        if(user.BookingStatus === "Pending"){
+        result+=`
+        <form class="cancelContainer" id="cancelContainer">
+            <div class="imageToCancel">
+                <img src="../${user.TourImage}" alt="">
+            </div>
+            <div class="cancelName">
+                ${user.TourName}
+            </div>
+            <div class="dateContainer">
+                <div class="label">Booked On:</div>
+                <div class="BookedDate">${user.BookedAt}</div>
+            </div>
+            <textarea placeholder="Reason" id="reason" name="Reason"></textarea>
+            <input type="hidden" value="${user.BookingID}" name="BookingID">
+            <button type="button" id="cancelBooking" onclick="cancel('${user.BookingID}')">Cancel</button>
+        </form>
+    `;
+        }
+    
+    });
+    
+        document.querySelector('.displayContainer').innerHTML=result;
+    })   .catch(error => console.error("Error:", error));
+
+}
+function cancel(){
+    let form=document.getElementById('cancelContainer');
+    let formData=new FormData(form);
+    fetch(`../Backend/cancelBooking.php`,{
+        method:"POST",
+        body:formData
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data.error){
+            alert('Failed To Cancel Booking')
+        }else{
+            alert(data.message);
+            cancelBooking();
+        }
+
+    })
+}
+function mode(counter){
+    if(counter === 'Dark'){
+        
+        document.querySelector('body').style.background="black";
+        document.querySelector('.displayContainer').style.color="#ededed";
+    }
+    else{
+        document.querySelector('.displayContainer').style.color="#252525";
+        document.querySelector('body').style.background="white";
+    }
+}
+document.addEventListener('DOMContentLoaded',()=>{
+    let theme=localStorage.getItem('Theme') || 'Bright';
+    mode(theme);
+});
+displayPlaces();
+function privilege(){
+    fetch('../Backend/getUser.php')
+    .then(response=> {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+    .then(data=>{
+        if(data.Privilege =='Blocked'){
+        document.querySelector('body').innerHTML=`
+            <h1>You Have Been Blocked!</h1>
+            <p>Please contact Support Center Call +251912345432</p>
+        `;
+        }
+    }).catch(error => console.log("Error fetching user data:", error));
+    
+}
+privilege();

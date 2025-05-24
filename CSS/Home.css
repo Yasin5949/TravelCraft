@@ -25,10 +25,7 @@ body{
     border-bottom-left-radius:20px;
     border-bottom-right-radius:20px;
 }
-.navBar .last{
-    width:30%;
-    height:100%;
-}
+
 .navBar .middle #ul{
     list-style-type: none;
 }
@@ -52,119 +49,26 @@ body{
     color:white;
     border-bottom:2px solid black;
 }
-.navBar .last .profile{
-    position:absolute;
-    top:20px;
-    right:1%;
-    width:80px;
-    height:auto;
-    text-align: center;
-    align-content: center;
-    font-size: large;
-    cursor:pointer;
-    color:grey;
-}
-.menu{
-    position:fixed;
-    right:0.5%;
-    top:55px;
-    width:200px;
-    z-index:5;
-    display:grid;
-    background-color:rgba(128, 128, 128, 0.466);
-    backdrop-filter:blur(22px);
-    transition:1s;
-}
-.menu .account{
-    position:absolute;
-    width:100%;
-    height:70px;
-}
-.menu .account .profileInMenu{
-    position:absolute;
-    top:calc(50% - 25px);
-    right:5px;
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    background-color:grey;
-}
-.menu .account .customerName{
-    position:absolute;
-    left:20px;
-    top:calc(50% - 15px);
-    width:100px;
-    height:30px;
-    background-color:grey
-}
-.menu .account .exit{
-    position:absolute;
-    left:-13%;
-    top:-25px;
-    width:30px;
-    height:30px;
-    cursor:pointer;
-}
-.menu .account .exit .line{
-    position:absolute;
-    height:3px;
-    width:100%;
-    transform:translateY(10px)
-            rotateZ(45deg);
-    background-color:red
-}
-.menu .account .exit .lineTwo{
-    position:absolute;
-    height:3px;
-    width:100%;
-    transform:translateY(10px)
-            rotateZ(-45deg);
-    background-color:red
-}
-.menu .editProfile{
-    position:absolute;
-    top:70px;
-    width:100%;
-    height:40px;
-    text-align: center;
-    font-size: larger;
-    color:white;
-    cursor:pointer;
-    border-top:2px solid white;
 
-}
-.menu .history{
-    position:relative;
-    top:110px;
-    width:100%;
-    height:40px;
-    text-align: center;
-    font-size: larger;
-    color:white;
-    cursor:pointer;
-    border-top:2px solid white;
-
-}
-.menu .logOut{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:50px;
-    text-align: center;
-    font-size: larger;
-    cursor:pointer;
-    color:red;
-    border-top:2px solid white;
-}
 .modeContainer{
     position:fixed;
     right:20px;
-    top:70px;
+    top:20px;
     width:60px;
     height:20px;
     border-radius:20px;
     z-index:3;
     background-color:gray;
+}
+#theme{
+    width:60px;
+    height:30px;
+    background:transparent;
+    border:none;
+    color:grey;
+    position:fixed;
+    right:20px;
+    z-index:3;
 }
 .toggler{
     position:absolute;
@@ -315,7 +219,7 @@ body{
 
 }
 .marqueeContainer{
-    position:absolute;
+    position:relative;
     top:200%;
     left:10%;
     width:80%;
@@ -355,7 +259,6 @@ body{
     height:300px;
     margin-top:30px;
     margin-left:20px;
-    background-color:blue;
     margin-bottom:30px;
     overflow: hidden;
 }
@@ -384,7 +287,7 @@ body{
     transform:scale(1.1);
 }
 .nextPage{
-    position:absolute;
+    position:relative;
     top:110%;
     width:100%;
     left:0;
@@ -398,7 +301,8 @@ body{
     left:1%;
     width:40%;
     height:250px;
-    background-color:#ededed
+    background-color:#796f6f9c;
+
 }
 .customerTwo{
     position:absolute;
@@ -406,21 +310,24 @@ body{
     right:1%;
     width:40%;
     height:250px;
-    background-color:#ededed;
+    background-color:#796f6f9c;
 
 }
 .customerThree{
     position:absolute;
     left:1%;
     top:530px;
-    width:40%;
+    width:42%;
     height:250px;
-    background-color:#ededed;
+    background-color:#796f6f9c;
 }
 .customerPicture{
     width:40%;
     height:100%;
-    background-color:cyan;
+}
+.customerPicture img{
+    width:100%;
+    height:100%;
 }
 .customerQuote{
     position:absolute;
@@ -428,8 +335,11 @@ body{
     left:42%;
     width:55%;
     height:50%;
-    border-left:5px solid blue;
+    border-left:5px solid #EDEDED;
     background-color:rgba(0, 0, 0, 0.506);
+    color:#ededed;
+    overflow: hidden;
+    padding:10px;
 }
 .nextPage button{
     position:absolute;
@@ -446,15 +356,14 @@ body{
     background-color:rgb(29, 29, 182);
 }
 .favContainer{
-    position:absolute;
+    position:relative;
     left:5%;
-    top:250%;
     width:90%;
     height:100%;
     overflow: hidden;
 }
 .favContainer .topic{
-    position:absolute;
+    position:relative;
     width:600px;
     left:calc(50% - 100px);
     top:10%;
@@ -463,7 +372,7 @@ body{
 
 }
 .favContainer .favDetail{
-    position:absolute;
+    position:relative;
     top:calc(50% - 50px);
     width:40%;
     height:max-content;
@@ -483,7 +392,7 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .favContainer .favoritePlaces{
-    position:absolute;
+    position:relative;
     display:flex;
     top:calc(50% - 100px);
     right:-50%;
@@ -502,7 +411,7 @@ body{
     overflow: hidden;
 }
 .favContainer .favoritePlaces .favorites a .image{
-    position:absolute;
+    position:relative;
     width:100%;
     height:100%;
 }
@@ -544,7 +453,7 @@ body{
 
 }
 .favContainer .btnContainer{
-    position:absolute;
+    position:relative;
     right:-5px;
     top:70%;
     display:flex;
@@ -672,9 +581,319 @@ body{
     margin-left:0;
 }
 .moreInfo{
-    position:absolute;
-    top:350%;
+    position:relative;
+    left:0;
     width:100%;
-    height:50%;
+    height:auto;
+    margin-top:50px;
+}
+footer {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+}
+.footer-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+}
+.footer-content, .footer-contact, .footer-social {
+        max-width: 300px;
+}
+.footer-content h3, .footer-contact h4, .footer-social h4 {
+        color: #FFD700;
+}
+.footer-social a {
+        color: #FFD700;
+        text-decoration: none;
+        margin: 5px;
+}
+.footer-bottom {
+        margin-top: 10px;
+        border-top: 1px solid #555;
+        padding-top: 10px;
+}
+.tourFormContainer{
+    position:fixed;
+    top:0;
+    left:10%;
+    width:80%;
+    height:30%;
+    background:#dedede7e;
+    color:black;
+}
+.operationField{
+    position:fixed;
+    bottom:20px;
+    left:2%;
+    width:96%;
+    height:70%;
+    overflow: auto;
+    background:rgba(255, 250, 250, 0.452);
+    border-radius:20px;
+}
+.operationField .TourContainer{
+    position:relative;
+    left:10%;
+    top:20px;
+    width:80%;
+    height:300px;
+    border-radius:10px;
     background:black;
+    margin-bottom:20px;
+}
+.operationField .TourContainer .image{
+    position:relative;
+    top:10%;
+    left:20px;
+    width:30%;
+    height:80%;
+    background:grey
+}
+.operationField .TourContainer .image img{
+    width:100%;
+    height:100%;
+}
+.operationField .TourContainer .place{
+    position:absolute;
+    right:20px;
+    top:10%;
+    width:60%;
+    height:80%;
+}
+.operationField .TourContainer .place .placeName{
+    position:relative;
+    top:1%;
+    left:10%;
+    width:80%;
+    height:50px;
+    text-align: center;
+    align-content: center;
+    font-size: 25px;
+    color:#ededed
+}
+.operationField .TourContainer .place .description{
+    position:relative;
+    top:10px;
+    left:5%;
+    width:90%;
+    height:60%;
+    text-align: center;
+    align-content: center;
+    color:#ededed;
+    background:rgba(128, 128, 128, 0.514);
+    padding:10px;
+    border-radius:10px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.operationField .TourContainer .place .price{
+    position:relative;
+    bottom:-10px;
+    width:200px;
+    height:30px;
+    font-size:larger;
+    text-align: center;
+    color:#ededed;
+}
+.operationField .TourContainer .place .region{
+    position:absolute;
+    right:0;
+    top:-20px;
+    width:50%;
+    height:30px;
+    text-align: center;
+    color:#ededed;
+}
+.displayContainer{
+    position:relative;
+    left:5%;
+    width:90%;
+    max-height:600px;
+    overflow: auto;
+    background:rgba(0, 0, 0, 0.171)
+}
+.displayContainer .placeHolder{
+    position:relative;
+    top:1%;
+    left:2%;
+    margin-right:2%;
+    margin-top:2%;
+    display:inline-block;
+    width:90%;
+    height:300px;
+    color:white;
+    border-radius:10px;
+    background:#252525;
+}
+.displayContainer .placeHolder .placeImage{
+    position:absolute;
+    top:5%;
+    left:1%;
+    width:30%;
+    height:90%;
+    border-radius:10px;
+    transition:0.3s linear;
+    overflow: hidden;
+}
+.displayContainer .placeHolder .placeImage:hover{
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    z-index:2;
+}
+.displayContainer .placeHolder .placeImage img{
+    width:100%;
+    height:100%;
+}
+.displayContainer .placeHolder .placeName{
+    position:absolute;
+    top:5%;
+    right:1%;
+    width:67%;
+    height:90%;
+    font-size: 30px;
+    text-align: center;
+    align-content: center;
+    border-radius:10px;
+    overflow: hidden;
+}
+.displayContainer .placeHolder .placeName .description{
+    position:absolute;
+    top:0;
+    left:0;
+    width:60%;
+    height:100%;
+    font-size: medium;
+    text-align: center;
+    align-content: center;
+}
+.displayContainer .placeHolder .placeName  .pricing{
+    position:absolute;
+    right:0;
+    top:0;
+    width:39%;
+    height:100%;
+    background:#252525;
+}
+.displayContainer .placeHolder .placeName  .pricing .phrase{
+    position:absolute;
+    top:10px;
+    width:50px;
+    height:20px;
+    text-align: center;
+    font-size: small;
+}
+.displayContainer .placeHolder .placeName .priceAmount{
+    position:absolute;
+    top:20px;
+    left:40px;
+    width:70px;
+    height:30px;
+}
+.displayContainer .placeHolder .placeName  .pricing .bookBtn{
+    position:absolute;
+    top:60px;
+    left:5%;
+    width:90%;
+    height:50px;
+    border-radius:10px;
+    color:white;
+    text-align: center;
+    align-content: center;
+    background:#0b0d83;
+    cursor:pointer;
+}
+.displayContainer .placeHolder .placeName .guidContainer{
+    position:absolute;
+    bottom:10px;
+    left:5%;
+    width:90%;
+    height:140px;
+    border-radius:10px;
+    background:#404242;
+}
+.displayContainer .placeHolder button{
+    position:absolute;
+    bottom:2%;
+    right:5%;
+    width:200px;
+    height:50px;
+    font-size: larger;
+    border-radius:10px;
+    background:orange;
+    color:white;
+    border:none;
+}
+.displayContainer .placeHolder button:hover{
+    transform:scale(1.1)
+}
+.displayContainer .placeHolder button:active{
+    background:grey;
+}
+#bookForm{
+    position:fixed;
+    top:calc(50% - 300px);
+    left:calc(50% - 250px);
+    width:500px;
+    height:600px;
+    text-align: left;
+    padding-left:20px;
+    background:rgba(155, 152, 152, 0.445);
+    backdrop-filter:blur(20px);
+}
+#bookForm h1{
+    width:50px;
+    margin-left:calc(50% - 25px);
+}
+#bookForm label input{
+    position:relative;
+    width:70%;
+    height:20px;
+    margin-bottom:20px;
+}
+#bookForm .hotelDisplay{
+    position:absolute;
+    left:5%;
+    bottom:55px;
+    width:90%;
+    height:40%;
+    background:#ededed;
+    text-align: center;
+    align-content: center;
+}
+#bookForm button{
+    position:absolute;
+    bottom:2px;
+    left:5%;
+    width:90%;
+    height:50px;
+    border:none;
+    color:white;
+    background:green;
+    border-radius:10px;
+    font-size: larger;
+
+}
+#bookForm label select{
+    position:relative;
+    width:60%;
+    height:30px;
+    margin-bottom:10px;
+    align-items: left;
+}
+#bookForm .exit{
+    position:absolute;
+    top:0;
+    right:0;
+    width:50px;
+    height:20px;
+    background:red;
+    color:white;
+    font-size: large;
+    text-align: center;
+    border-radius:10px;
+    cursor:pointer;
+
 }

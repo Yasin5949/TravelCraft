@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['ResearcherID'])) {
-    header("Location: ../Pages/adminLogin.html");
+if (!isset($_SESSION['UserID'])) {
+    header("Location: ../HTMLPages/Login.html");
     exit();
 }

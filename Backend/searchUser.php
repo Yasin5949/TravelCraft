@@ -1,13 +1,13 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "Ya5in@astu##";
 $dbname = "TravelCraftDB";
 
 $conn = new mysqli($host, $username, $password, $dbname);
 if (isset($_GET['query'])) {
     $query = $_GET['query'];
-    $sql = "SELECT * FROM Users WHERE Email LIKE ?";
+    $sql = "SELECT * FROM Users WHERE firstName LIKE ?";
     $stmt = $conn->prepare($sql);
     $searchTerm = "%" . $query . "%";
     $stmt->bind_param("s", $searchTerm);

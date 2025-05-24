@@ -12,7 +12,7 @@
         <div class="searchBar">
             <div class="type">
                 <label for="user">
-                    User:<input type="radio" id="user" name="type" value="User">
+                    User:<input type="radio" id="user" name="type" value="User" checked>
                 </label><br>
                 <label for="Place">
                     Place:<input type="radio" id="Place" name="type" value="Place">
@@ -23,62 +23,48 @@
         </div>
         <div class="admin">
             <div class="messages">
-                <div class="bell">
+                <div class="bell" onclick="getRequest()">
                     <div class="baseBell"></div>
                     <div class="base"></div>
                     <div class="handle"></div>
                     <div class="newMessage"></div>
                 </div>
             </div>
-        <div class="adminProfile">
-            <div class="profile"></div>
-            <div class="name">Admin</div>
+        <div class="adminProfile" onclick="menu()">
+            <img src="../images/menu_9890843 (1).png" alt="">
         </div>
     </div>
     </div>
     <div class="leftPanel">
-        <div class="report"></div>
+        <div class="report">
+            
+        </div>
         <div class="optionContainer">
-            <button>Booked</button>
-            <button>Canceled</button>
-            <button>Add Guid</button>
-            <button>View Guid</button>
-            <button>Remove Guid</button>
+            <button onclick="BookedBooking()">Booked</button>
+            <button onclick="canceledBooking()">Canceled</button>
+            <button onclick="blockedUser()">Blocked Users</button>
             <button onclick="addPlace();">Add Place</button>
-            <button>View Place</button>
-            <button>Remove Place</button>
-            <button>Modify Place</button>
+            <button onclick="viewPlace()">View Place</button>
         </div>
-    </div>
+        </div>
+        <div id="theme">
+            <div class="modeContainer" onclick="toggle()">
+                <div class="toggler"></div>
+            </div>
+        <select id="adminTheme" onclick="mode(this.value)">
+            <option value="Bright">Bright</option>
+            <option value="Dark">Dark</option>
+        </select>
+        </div>
+    
     <div class="operations">
-        <div class="analyticPanel">
-            <div class="topics">
-                <div class="topicName">Top</div>
-                <div class="placeName">Lalibela</div>
-                <div class="imageContainer">
-                    <img src="../images/lalibela.jpg" alt="">
-
-                </div>
-            </div>
-            <div class="topics">
-                <div class="topicName">Least</div>
-                <div class="placeName">Abay</div>
-                <div class="imageContainer">
-                    <img src="../images/abay.jpg" alt="">
-                </div>
-            </div>
-            <div class="topics">
-                <div class="topicName">Rate</div>
-                <div class="topName">Top:100 Booked</div>
-                <div class="leastName">Least:0 Booked</div>
-            </div>
-        </div>
+        
         <div class="operationField">
-            
-            
+            <img src="../images/logo2.png" alt="logo" id="img">
         </div>
     </div>
-    <div class="messagePanel"></div>
+    
+    <div class="menu"></div>
     <script src="../javascripts/admin.js"></script>
 </body>
 </html>

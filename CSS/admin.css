@@ -1,19 +1,20 @@
 body{
     overflow: hidden;
-    background:#d1d1d1;
+    background:#252525;
 }
 .navBar{
     position:fixed;
+    top:0;
     left:0px;
     width:100%;
     height:60px;
-    background:#ededed;
+    background:#756a6a57;
 }
 .navBar .companyName{
     width:20%;
     height:100%;
     font-size: larger;
-    text-align: center;
+    text-align: right;
     align-content: center;
 }
 .navBar .searchBar{
@@ -50,6 +51,7 @@ body{
     padding-left:80px;
     font-size: larger;
     border:none;
+    background:rgba(0, 0, 0, 0.212);
 }
 .navBar .searchBar #searchBtn{
     position:absolute;
@@ -107,41 +109,154 @@ body{
 .navBar .admin .messages .bell .newMessage{
     position:absolute;
     right:0;
-    width:20px;
+    width:auto;
     height:20px;
     background:red;
+    padding:2px;
+    color:#ededed;
 }
 .navBar .admin .adminProfile{
     position:absolute;
-    right:0;
-    width:60%;
-    height:100%;
-}
-.navBar .admin .adminProfile .profile{
-    position:relative;
-    top:calc(50% - 25px);
-    left:25px;
-    width:50px;
-    height:50px;
-    background:black;
-    border-radius:50%;
-}
-.navBar .admin .adminProfile .name{
-    position:absolute;
-    left:78px;
+    right:50px;
     top:20%;
-    width:50%;
+    width:50px;
     height:60%;
-    font-size: larger;
-    align-content: center;
-    text-align: left;
+}
+.navBar .admin .adminProfile img{
+    width:100%;
+    height:100%;
 }
 .leftPanel{
     position:fixed;
     top:10%;
     width:250px;
     height:90%;
-    background:#ededed;
+    border-top-right-radius:20px;
+}
+.menu{
+    position:fixed;
+    right:20px;
+    top:60px;
+    width:200px;
+    height:auto;
+    background:#34343488;
+    display:grid;
+}
+.menu button{
+    border:none;
+    background:transparent;
+    color:#ededed;
+    font-size: large;
+    height:65px;
+}
+.menu button:hover{
+    background:#343434
+}
+#newAdmin{
+    position:fixed;
+    left:calc(50% - 200px);
+    top:calc(50% - 200px);
+    width:400px;
+    height:450px;
+    text-align: center;
+    align-content: center;
+    background:rgba(128, 128, 128, 0.37);
+    backdrop-filter:blur(20px)
+}
+#newAdmin input{
+    width:80%;
+    height:30px;
+    margin-left:50px;
+    margin-right:50px;
+    background:rgba(128, 128, 128, 0.2);
+    border-radius:20px;
+    border:none;
+    text-align: center;
+    font-size: large;
+}
+#changePassword{
+    position:fixed;
+    left:calc(50% - 150px);
+    top:calc(50% - 150px);
+    width:300px;
+    height:350px;
+    background:rgba(128, 128, 128, 0.37);
+    backdrop-filter:blur(20px);
+    text-align: center;
+    align-content: center;
+}
+#changePassword input{
+    width:80%;
+    height:30px;
+    border-radius:20px;
+    border:none;
+    background:rgba(128, 128, 128, 0.2);
+    text-align: center;
+    font-size: large;
+    margin-left:30px;
+    margin-right:30px;
+}
+.exit{
+    position:absolute;
+    top:10px;
+    left:10px;
+    width:40px;
+    height:20px;
+    background:red;
+    color:#ededed;
+    cursor: pointer;
+}
+#changePassword button{
+    width:80%;
+    height:40px;
+    margin-top:30px;
+    border:none;
+    border-radius:20px;
+    background:green;
+    color:#ededed;
+    font-size: large;
+}
+#newAdmin button{
+    width:80%;
+    height:40px;
+    margin-top:30px;
+    border:none;
+    border-radius:20px;
+    background:green;
+    color:#ededed;
+    font-size: large;
+}
+#theme{
+    position:absolute;
+    width:60px;
+    height:60px;
+    border:none;
+}
+#theme select{
+    position:absolute;
+    width:100%;
+    height:30px;
+    bottom:0;
+    background:none;
+    border:none;
+}
+#theme .modeContainer{
+    position:absolute;
+    top:0;
+    width:60px;
+    height:30px;
+    border-radius:20px;
+    z-index:3;
+    background-color:grey;
+}
+#theme .modeContainer .toggler{
+    position:absolute;
+    width:30px;
+    height:30px;
+    background-color:gray;
+    box-shadow: 1px 0 5px red;
+    border-radius:50%;
+
 }
 .leftPanel .report{
     position:absolute;
@@ -149,7 +264,35 @@ body{
     width:80%;
     height:100px;
     border-radius:20px;
-    background:black;
+    background:orange;
+    color:#ededed;
+    overflow: hidden;
+    cursor:default;
+    
+}
+.leftPanel .report .total{
+    width:100%;
+    height:33%;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+    color:#000080;
+}
+.leftPanel .report .canceled{
+    width:100%;
+    height:33%;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+    color:#000080;
+}
+.leftPanel .report .earned{
+    width:100%;
+    height:33%;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+    color:#000080;
 }
 .leftPanel .optionContainer{
     position:absolute;
@@ -165,7 +308,8 @@ body{
     border:none;
     cursor: pointer;
     transition:0.5s;
-    background:snow;
+    background:transparent;
+    color:grey;
 }
 .leftPanel .optionContainer button:hover{
     transform:scale(1.2)
@@ -179,101 +323,29 @@ body{
     left:260px;
     width:70%;
     height:90%;
-    background:#ededed;
     border-top-right-radius:20px;
-}
-.operations .analyticPanel{
-    position:absolute;
-    left:2%;
-    width:96%;
-    height:200px;
-    border-radius:20px;
-    background:snow;
-}
-.operations .analyticPanel .topics{
-    position:relative;
-    width:30%;
-    height:90%;
-    background:#ededed;
-    display:inline-block;
-    margin-left:2%;
-    margin-top:1%;
-    border-radius:20px;
-    overflow: hidden;
-    
-}
-.operations .analyticPanel .topics .topicName{
-    position:relative;
-    width:80%;
-    height:40px;
-    margin-left:10%;
-    margin-top:5px;
-    text-align: center;
-    font-size: larger;
-}
-.operations .analyticPanel .topics .placeName{
-    position:relative;
-    left:10%;
-    width:80%;
-    height:50px;
-    font-size: larger;
-    text-align: center;
-}
-.operations .analyticPanel .topics .imageContainer{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:85px;
-}
-.operations .analyticPanel .topics .imageContainer img{
-    width:100%;
-    height:100%;
-}
-.operations .analyticPanel .topics .topName{
-    position:relative;
-    left:10%;
-    width:80%;
-    height:50px;
-    text-align: center;
-    font-size: large;
-    align-content: center;
-}
-.operations .analyticPanel .topics .leastName{
-    position:relative;
-    left:10%;
-    width:80%;
-    height:50px;
-    margin-top:10px;
-    text-align: center;
-    font-size: large;
-    align-content: center;
 }
 .operations .operationField{
     position:absolute;
     bottom:20px;
     left:2%;
     width:96%;
-    height:70%;
-    overflow: auto;
-    background:snow;
-    border-radius:20px;
-}
-.messagePanel{
-    position:absolute;
-    top:10%;
-    left:1480px;
-    width:260px;
     height:90%;
-    border-top-left-radius:20px;
-    background:#ededed;
+    overflow: auto;
+    border-radius:20px;
+
+}
+.operations .operationField #img{
+    width:100%;
+    height:90%;
 }
 .operationField #addTour{
     position:absolute;
     left:calc(50% - 200px);
-    top:calc(50% - 200px);
+    top:calc(50% - 250px);
     text-align: center;
     width:400px;
-    height:400px;
+    height:450px;
     color:#ededed;
     background:#252525;
     border-radius:10px;
@@ -285,6 +357,12 @@ body{
     border-bottom:2px solid #ededed;
     background:none;
     margin-bottom:20px;
+    color:#ededed;
+    text-align: center;
+}
+.operationField #addTour #Price{
+    color:#ededed;
+    text-align: center;
 }
 .operationField #addTour textarea{
     position:relative;
@@ -459,4 +537,477 @@ body{
     height:35%;
     align-content: center;
     color:#ededed
+}
+.operationField .TourContainer{
+    position:relative;
+    left:10%;
+    top:20px;
+    width:80%;
+    height:300px;
+    border-radius:10px;
+    background:#343434;
+    margin-bottom:20px;
+}
+.operationField .TourContainer .image{
+    position:relative;
+    top:10%;
+    left:20px;
+    width:30%;
+    height:80%;
+    background:grey
+}
+.operationField .TourContainer .image img{
+    width:100%;
+    height:100%;
+}
+.operationField .TourContainer .place{
+    position:absolute;
+    right:20px;
+    top:10%;
+    width:60%;
+    height:80%;
+}
+.operationField .TourContainer .place .placeName{
+    position:relative;
+    top:1%;
+    left:10%;
+    width:80%;
+    height:50px;
+    text-align: center;
+    align-content: center;
+    font-size: 25px;
+    color:#ededed
+}
+.operationField .TourContainer .place .description{
+    position:relative;
+    top:10px;
+    left:5%;
+    width:90%;
+    height:60%;
+    text-align: center;
+    align-content: center;
+    color:#ededed;
+    background:rgba(128, 128, 128, 0.514);
+    padding:10px;
+    border-radius:10px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.operationField .TourContainer .place .price{
+    position:relative;
+    bottom:-10px;
+    width:200px;
+    height:30px;
+    font-size:larger;
+    text-align: center;
+    color:#ededed;
+}
+.operationField .TourContainer .place .region{
+    position:absolute;
+    right:0;
+    top:-20px;
+    width:50%;
+    height:30px;
+    text-align: center;
+    color:#ededed;
+}
+.operationField .searchUser{
+    position:relative;
+    left:10%;
+    top:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+    width:80%;
+    height:300px;
+    background:#343434;
+}
+.operationField .searchUser .userProfile{
+    position:relative;
+    top:5%;
+    left:20px;
+    width:30%;
+    height:60%;
+    background:grey;
+}
+.operationField .searchUser .userProfile img{
+    width:100%;
+    height:100%;
+}
+.operationField .searchUser .viewBooking{
+    position:absolute;
+    left:5%;
+    bottom:10px;
+    width:90%;
+    height:60px;
+    border-radius:10px;
+    background:rgba(107, 104, 104, 0.712);
+}
+.operationField .searchUser .viewBooking .view{
+    position:absolute;
+    left:10px;
+    top:10%;
+    width:40%;
+    height:80%;
+    background:blue;
+    border-radius:10px;
+    color:#ededed;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+    cursor:pointer;
+
+}
+.operationField .searchUser .viewBooking .delete{
+    position:absolute;
+    right:10px;
+    top:10%;
+    width:40%;
+    height:80%;
+    border-radius:10px;
+    background:red;
+    color:#ededed;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+}
+.operationField .searchUser .userDetails{
+    position:absolute;
+    top:5%;
+    right:15%;
+    width:50%;
+    height:70%;
+}
+.operationField .searchUser .userDetails .email{
+    position:absolute;
+    bottom:30px;
+    left:5%;
+    width:90%;
+    height:40px;
+    align-content: center;
+    color:#ededed;
+}
+.operationField .searchUser .userDetails .userName{
+    position:absolute;
+    left:10%;
+    width:80%;
+    height:50px;
+    text-align: center;
+    align-content: center;
+    color:#ededed;
+    font-size: 20px;
+}
+.operationField .searchUser .userDetails .created{
+    position:absolute;
+    top:50px;
+    width:80%;
+    height:30px;
+    text-align: center;
+    align-content: center;
+    color:#ededed;
+}
+.operationField .requestContainer{
+    position:relative;
+    left:10%;
+    top:30px;
+    width:80%;
+    height:150px;
+    background:#343434;
+    border-radius:10px;
+    margin-bottom:30px;
+}
+.operationField .requestContainer .profile{
+    position:absolute;
+    top:25px;
+    left:2%;
+    width:100px;
+    height:100px;
+    background:grey;
+    border-radius:50%;
+    overflow: hidden;
+}
+.operationField .requestContainer .profile img{
+    width:100%;
+    height:100%;
+}
+.operationField .requestContainer .reason{
+    position:relative;
+    left:20%;
+    width:50%;
+    height:70%;
+}
+.operationField .requestContainer .reason .reasonText{
+    width:100%;
+    height:50%;
+    text-align: center;
+    padding:5px;
+    color:#ededed
+}
+.operationField .requestContainer .reason .requestedAt{
+    width:100%;
+    height:50%;
+    text-align: center;
+    align-content: center;
+    color:#ededed;
+    font-size: large;
+}
+.operationField .requestContainer .phoneNumber{
+    position:absolute;
+    left:20%;
+    bottom:0;
+    width:80%;
+    height:30px;
+    text-align: center;
+    font-size: larger;
+    color:#ededed
+}
+.operationField .requestContainer .responded{
+    position:absolute;
+    top:10px;
+    right:20px;
+    width:100px;
+    height:50px;
+    text-align: center;
+    align-content: center;
+    color:#ededed;
+    font-size: larger;
+    border-radius:10px;
+    background:orange;
+    cursor:pointer;
+}
+.operationField .canceledContainer{
+    position:relative;
+    margin-top:20px;
+    left:1%;
+    width:80%;
+    height:150px;
+    background:#343434;
+    border-radius:20px;
+    overflow: hidden;
+}
+.operationField .canceledContainer .canceledImageContainer{
+    position:relative;
+    top:10px;
+    left:10px;
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    overflow: hidden;
+    background:grey;
+
+}
+.operationField .canceledContainer .canceledImageContainer img{
+    width:100%;
+    height:100%;
+}
+.operationField .canceledContainer .canceledPlaceName{
+    position:absolute;
+    top:20px;
+    left:120px;
+    width:200px;
+    height:60px;
+    color:white;
+    font-size: 30px;
+    text-align: center;
+    align-content: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-left:2px solid white;
+}
+.operationField .canceledContainer .detailsMenu{
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    height:30px;
+    cursor:pointer;
+    color:white;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+}
+.operationField .canceledContainer .detailsMenu:hover{
+    background:grey;
+}
+.operationField .canceledContainer .detailsMenu .dot{
+    position:relative;
+    margin-top:5px;
+    margin-left:calc(50% - 5px);
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:grey;
+}
+.operationField .canceledContainer .canceledLabel{
+    position:absolute;
+    right:4%;
+    top:20px;
+    width:200px;
+    height:60px;
+    color:white;
+    font-size: larger;
+    text-align: center;
+    align-content: center;
+}
+.operationField .canceledContainer .canceledDate{
+    position:absolute;
+    right:3%;
+    top:60px;
+    width:100px;
+    height:20px;
+    color:white;
+    font-size: medium;
+    text-align: center;
+    border-bottom:2px solid grey;
+}
+.operationField .canceledContainer .reason{
+    position:absolute;
+    bottom:60px;
+    width:100%;
+    height:200px;
+    border-top:2px solid white;
+    border-bottom:2px solid white;
+    text-align: center;
+    align-content: center;
+}
+.operationField .userInfo{
+    position:relative;
+    left:10%;
+    margin-top:30px;
+    width:80%;
+    max-height:500px;
+    overflow: auto;
+    text-align: center;
+}
+.userInfo .bookedContainer{
+    position:relative;
+    left:10%;
+    margin-bottom:20px;
+    border-radius:10px;
+    width:70%;
+    height:300px;
+    background:#343434;
+}
+.userInfo .bookedContainer .bookedImage{
+    position:relative;
+    left:10%;
+    top:20px;
+    width:80%;
+    height:40%;
+    background:grey;
+}
+.userInfo .bookedContainer .bookedImage img{
+    width:100%;
+    height:100%;
+}
+.userInfo .bookedContainer .detailContainer{
+    position:absolute;
+    left:5%;
+    bottom:0;
+    width:90%;
+    height:53%;
+}
+.userInfo .bookedContainer .detailContainer .nameContainer{
+    position:absolute;
+    left:10%;
+    top:10px;
+    width:80%;
+    height:50px;
+    color:#ededed;
+    text-align: center;
+    align-content: center;
+    font-size: 30px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+.userInfo .bookedContainer .detailContainer .bookedOn{
+    position:relative;
+    left:20%;
+    top:70px;
+    width:60%;
+    height:40px;
+    color:#ededed;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+}
+.userInfo .bookedContainer .detailContainer .bookedFor{
+    position:absolute;
+    left:2%;
+    bottom:0;
+    width:45%;
+    height:40px;
+    color:#ededed;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+}
+.userInfo .bookedContainer .detailContainer .endOn{
+    position:absolute;
+    right:2%;
+    bottom:0;
+    width:45%;
+    height:40px;
+    color:#ededed;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+}
+.userInfo .bookedContainer .detailContainer #bookingStatus{
+    position:absolute;
+    right:0;
+    width:100px;
+    height:40px;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+    color:#6b6464;
+}
+.blockedUsers{
+    position:relative;
+    left:10%;
+    top:20px;
+    margin-bottom:20px;
+    width:80%;
+    height:200px;
+    background:#343434;
+    border-radius:10px;
+    color:#ededed;
+}
+.blockedUsers .imageContainer{
+    position:relative;
+    left:10px;
+    top:10%;
+    width:200px;
+    height:80%;
+}
+.blockedUsers .imageContainer img{
+    width:100%;
+    height:100%;
+}
+.blockedUsers .unBlockBtn{
+    position:absolute;
+    left:220px;
+    bottom:20px;
+    border-radius:10px;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+    width:50%;
+    height:50px;
+    background:green;
+}
+.blockedUsers .nameContainer{
+    position:absolute;
+    left:220px;
+    width:50%;
+    height:100px;
+}
+.blockedUsers .nameContainer .name{
+    width:100%;
+    height:70%;
+    text-align: center;
+    align-content: center;
+    font-size: 30px;
+}
+.blockedUsers .nameContainer .email{
+    width:100%;
+    height:30%;
+    align-content: center;
+    text-align: right;
 }

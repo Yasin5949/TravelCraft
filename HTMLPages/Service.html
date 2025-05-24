@@ -18,31 +18,29 @@
                 <a href="About.html"><li id="about">About</li></a>
             </ul>
         </div>
-        <div class="last">
-            <div class="profile" onclick="Menu();">account</div>
-        </div>
+        
     </div>
-    <div class="menu" ></div>
     <div class="optionContainer">
         <div class="firstGroup">
             <div class="profileContainer" id="servisProfile">
-                <div class="profileInService" ></div>
+                
             </div>
             <button class="service selected" id="book" onclick="displayPlaces()">Book</button>
-            <button class="service " onclick="getBooking();" id="booked">Booked</button>
+            <button class="service " onclick="bookedTours();" id="booked">Booked</button>
             <button class="service" id="cancel" onclick="cancelBooking();">Cancel Booking</button>
-            <button class="service" id="refund">ReFund</button>
             <button class="service" id="canceled" onclick="canceledBooking()">Canceled Bookings</button>
-            <button class="service" id="expense" onclick="Expense()">Expense</button>
-            <button class="service" id="history" onclick="allHistory()">All History</button>
+            <button class="service" id="refund" onclick="accountManage()">Account Manager</button>
         </div>
         <div class="groupTwo">
             <button type="button" class="service" id="terms" onclick="terms();">Terms & Conditions</button>
         </div>
     </div>
-    <div class="displayContainer"></div>
-    
-    
-    <script type="module" src="../javascripts/Service.js"></script>
+    <div class="displayContainer">
+
+    </div>
+
+
+
+    <script src="../javascripts/Service.js"></script>
 </body>
 </html>

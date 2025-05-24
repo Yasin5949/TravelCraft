@@ -6,7 +6,7 @@ class Database
     private $password = "";
     private $database = "TravelCraftDB";
     private $conn;
-    public function __constructor()
+    public function __construct()
     {
         $this->conn = new mysqli($this->host, $this->username, $this->password, $this->database);
         if ($this->conn->connect_error) {

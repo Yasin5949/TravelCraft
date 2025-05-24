@@ -49,54 +49,18 @@ document.querySelectorAll('.choice').forEach((button)=>{
         }
     })
 })
-function Chat(){
-    document.querySelector('.operations').innerHTML=`
-        <div class="messagePanel">
-            <div class="identifier" id="chatMessage">Messaging with Admin</div>
-            <div class="container">
-                <div class="messages">
-                    <div class="text"></div>
-                </div>
-                <div class="messages">
-                    <div class="sender"></div>
-                </div>
-                <div class="messages">
-                    <div class="text"></div>
-                </div>
-                <div class="messages">
-                    <div class="sender"></div>
-                </div><div class="messages">
-                    <div class="text"></div>
-                </div><div class="messages">
-                    <div class="sender"></div>
-                </div><div class="messages">
-                    <div class="text"></div>
-                </div><div class="messages">
-                    <div class="sender"></div>
-                </div><div class="messages">
-                    <div class="text"></div>
-                </div><div class="messages">
-                    <div class="sender"></div>
-                </div><div class="messages">
-                    <div class="text"></div>
-                </div>
-            </div>
-            <textarea name="message" id="messageTyping" placeholder="Send Us A Message"></textarea>
-            <button id="MessageBtn">Send</button>
-        </div>
-    `;
-}
 function callBack(){
     document.querySelector('.operations').innerHTML=`
-        <div class="callBackContainer">
+        <form class="callBackContainer">
             <label>Enter Your Number And Reason</label>
             <div class="phoneNumber">
                 <label for="phone">+251</label>
-                <input type="text" name="" id="phone" placeholder="919123847">
+                <input type="text" name="phoneNumber" id="phone" placeholder="919123847">
             </div>
-            <input class="reasonCallBack" placeholder=" Reason With 8 word">
-        </div>
-        <button class="callBackButton">CallBack</button>
+            <input class="reasonCallBack" name="Reason" placeholder=" Reason With 8 word">
+        </form>
+        <div class="responseContainer"></div>
+        <button class="callBackButton" onclick="callBackSupport()">CallBack</button>
     `;
 }
 function email(){
@@ -109,6 +73,28 @@ function email(){
         </div>
     `;
 }
+function callBackSupport(){
+    let number=document.querySelector('.callBackContainer');
+    let formData=new FormData(number);
+    fetch('../Backend/callBackSupport.php',{
+        method:"POST",
+        body:formData
+    }).then(response=>response.json())
+    .then(data=>{
+        if(data.error){
+            document.querySelector('.responseContainer').style.color='red';
+            document.querySelector('.responseContainer').innerHTML=`${data.error}`;
+        }else{
+            if(data.message === 'Request Created Successfully!'){
+                document.querySelector('.responseContainer').style.color='green';
+            }else{
+                document.querySelector('.responseContainer').style.color='red';
+            }
+            document.querySelector('.responseContainer').innerHTML=`${data.message}`;
+        }
+    })
+}
+
 function call(){
     document.querySelector('.operations').innerHTML=`
         <div class="emailContainer">
@@ -126,15 +112,43 @@ function lang(Lang){
         document.getElementById('service').innerText=translations.Service;
         document.getElementById('support').innerText=translations.Support;
         document.getElementById('about').innerText=translations.About;
-        document.getElementById('chat').innerText=translations.Chat;
         document.getElementById('callback').innerText=translations.CallBack;
         document.getElementById('emailUs').innerText=translations.Email;
         document.getElementById('call').innerText=translations.Call;
         document.getElementById('message').innerText=translations.Method;
-        document.getElementById('chatMessage').innerText=translations.ChatMessage;
-        document.getElementById('messageBtn').innerText=translations.ChatButton;
 
     })
 }
 const savedLanguage = localStorage.getItem("Language") || "English";
 lang(savedLanguage);
+function mode(counter){
+    if(counter === 'Dark'){
+        document.querySelector('body').style.background="black";
+    }
+    else{
+        document.querySelector('body').style.background="white";
+    }
+}
+document.addEventListener('DOMContentLoaded',()=>{
+    let theme=localStorage.getItem('Theme') || 'Bright';
+    mode(theme);
+});
+function privilege(){
+    fetch('../Backend/getUser.php')
+    .then(response=> {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+    .then(data=>{
+        if(data.Privilege =='Blocked'){
+        document.querySelector('body').innerHTML=`
+            <h1>You Have Been Blocked!</h1>
+            <p>Please contact Support Center Call +251912345432</p>
+        `;
+        }
+    }).catch(error => console.log("Error fetching user data:", error));
+    
+}
+privilege();

@@ -51,4 +51,39 @@ function display(){
                     }
     },10000)
 };
+function login(){
+    let form=document.getElementById('loginUser');
+    let formData=new FormData(form);
+    fetch('../Backend/Login.php',{
+        method:"POST",
+        body:formData
+    }).then(response=>response.json())
+    .then(data=>{
+        if(data.misMatch){
+            document.getElementById('password').style.borderBottom='2px solid red';
+        }else if(data.Logged){
+            window.location.href='Home.html';
+        }
+    })
+}
+function register(){
+    let form=document.querySelector('.registerUser');
+    let formData=new FormData(form);
+    fetch('../Backend/Register.php',{
+        method:"POST",
+        body:formData
+    }).then(response=>response.json())
+    .then(data=>{
+        if(data.notFilled){
+            alert(data.notFilled);
+        }
+        else if(data.misMatch){
+            document.querySelectorAll('.password').forEach(pass=>{
+                pass.style.borderBottom='2px solid red';
+            })
+        }else if(data.Registered){
+            window.location.href='Login.html';
+        }
+    })
+}
 display();

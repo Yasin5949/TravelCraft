@@ -1,36 +1,58 @@
 <?php
+header('Content-Type: application/json');
 session_start();
-if (!isset($_SESSION["UserID"])) {
-    echo json_encode(["error" => "User not logged in"]);
-    exit();
-}
-
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "Ya5in@astu##";
 $dbname = "TravelCraftDB";
 
 $conn = new mysqli($host, $username, $password, $dbname);
 
-
 if ($conn->connect_error) {
-    echo json_encode(["error" => "Database connection failed"]);
-    exit();
+    die(json_encode(["error" => "Database connection failed: " . $conn->connect_error]));
 }
-$userID = $_SESSION["UserID"];
-$sql = "SELECT * FROM Booking WHERE UserID = ?";
+
+if (!isset($_SESSION['UserID'])) {
+    die(json_encode(["error" => "UserID is not set in session"]));
+}
+
+$UserID = intval($_SESSION['UserID']);
+
+$sql = "SELECT 
+    u.UserID,
+    u.firstName,  
+    b.BookedAt,
+    b.BookingStatus,
+    b.BookedFor,
+    b.EndingDate,
+    b.Total,
+    b.BookingID,
+    t.TourName,
+    t.Region,
+    t.TourImage
+    FROM Users u 
+    INNER JOIN Booking b ON u.UserID = b.UserID
+    INNER JOIN Tours t ON b.TourID = t.TourID
+    WHERE u.UserID = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $userID);
+
+if (!$stmt) {
+    die(json_encode(["error" => "SQL preparation failed: " . $conn->error]));
+}
+
+$stmt->bind_param("i", $UserID);
 $stmt->execute();
 $result = $stmt->get_result();
-$bookings = [];
-while ($row = $result->fetch_assoc()) {
-    $bookings[] = $row;
-}
-if (!empty($bookings)) {
-    echo json_encode(["bookings" => $bookings]);
+
+$response = [];
+
+if ($result->num_rows === 0) {
+    $response = ["message" => "No bookings found"];
 } else {
-    echo json_encode(["error" => "No bookings found"]);
+    $response = $result->fetch_all(MYSQLI_ASSOC);
 }
+
+echo json_encode($response);
+
 $stmt->close();
 $conn->close();

@@ -1,10 +1,7 @@
 <?php
-$host = "localhost";
-$username = "root";
-$password = "";
-$dbname = "TravelCraftDB";
-
-$conn = new mysqli($host, $username, $password, $dbname);
+require_once 'dbConnection.php';
+$db = new Database();
+$conn = $db->getConnection();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $BookedFor = $_POST['BookedFor'];
     $EndingDate = $_POST['endingDate'];

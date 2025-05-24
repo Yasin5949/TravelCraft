@@ -14,16 +14,16 @@
         
     </div>
     <div class="formContainer">
-        <form action="../Backend/Login.php" method="POST" id="loginUser">
+        <form id="loginUser">
             <h1>Login</h1>
             <label><legend>Email</legend>
                 <input type="text" placeholder="" name="Email">
             </label>
             <label><legend>Password</legend>
-                <input type="password" placeholder="" name="password">
+                <input type="password" placeholder="" name="password" id="password">
             </label><br>
             <a href="#">Forget Password</a>
-            <input type="submit" class="LoginBtn" id="loginBtn" style="width:300px;height:40px;" value="logIn">
+            <input type="button" class="LoginBtn" id="loginBtn" style="width:300px;height:40px;" value="logIn" onclick="login()">
         </form>
         <div class="message">
             <h2>WELCOME!</h2>

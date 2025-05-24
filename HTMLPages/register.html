@@ -14,24 +14,24 @@
         
     </div>
     <div class="formContainer">
-        <form action="../Backend/Register.php" method="POST" class="registerUser">
+        <form class="registerUser">
             <h1>Register</h1>
             <label><legend>FirstName</legend>
                 <input type="text" placeholder="" name="firstName">
             </label>
             <label><legend>LastName</legend>
-                <input type="text" placeholder="" name="Lname">
+                <input type="text" placeholder="" name="lastName">
             </label>
             <label><legend>Email</legend>
                 <input type="text" placeholder="" name="Email">
             </label>
             <label><legend>password</legend>
-                <input type="password" placeholder="" name="password">
+                <input type="password" placeholder="" name="password" class="password">
             </label>
             <label><legend>confirmPassword</legend>
-                <input type="password" placeholder="" name="confirm">
+                <input type="password" placeholder="" name="confirm" class="password">
             </label><br>
-            <button class="registerBtn" style="width:300px;height:40px;">Register</button>
+            <button type="button" class="registerBtn" style="width:300px;height:40px;background:green;color:#ededed;border:none;border-radius:10px;" onclick="register()">Register</button>
         </form>
         <div class="message">
             <h2>Hey!</h2>

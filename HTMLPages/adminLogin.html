@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/adminLogin.css">
+</head>
+<body>
+    <form id="form">
+        <h1>Admin Login</h1>
+        <div class="name">
+            <input type="text" placeholder="userName" name="username">
+            <div class="imageContainer">
+                <img src="../images/user-pen-512.webp" alt="">
+            </div>
+        </div>
+        <div class="name " >
+            <input type="password" placeholder="password" name="password" id="password">
+            <div class="imageContainer " onclick="showPassword()">
+                <img src="../images/Lock@3x.png" alt="">
+                <div class="line"></div>
+            </div>
+           
+        </div>
+        <button type="button" id="btn" onclick="login()">Login</button>
+    </form>
+    <script src="../Javascripts/adminLogin.js"></script>
+</body>
+</html>

@@ -1,20 +1,28 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "Ya5in@astu##";
 $dbname = "TravelCraftDB";
 
 $conn = new mysqli($host, $username, $password, $dbname);
-if (isset($_GET['query'])) {
-    $query = $_GET['query'];
-    $sql = "SELECT * FROM Booking WHERE UserID LIKE ?";
-    $stmt = $conn->prepare($sql);
-    $searchTerm = "%" . $query . "%";
-    $stmt->bind_param("s", $searchTerm);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $users = $result->fetch_all(MYSQLI_ASSOC);
-    echo json_encode($users);
-} else {
-    echo json_encode(["error" => "No search query provided"]);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $Fname = $_POST['firstName'];
+    $Lname = $_POST['lastName'];
+    $Email = $_POST['Email'];
+    $password = $_POST['password'];
+    $confirm = $_POST['confirm'];
+    $profile = "UserPicture/profileChange.jpg";
+    if (!$Fname || !$Lname || !$Email || !$password || !$confirm) {
+        echo json_encode(["notFilled" => "Please Fill The Field"]);
+    } else {
+        $hashedPassword = Password_hash($_POST['password'], PASSWORD_DEFAULT);
+        if ($confirm === $password) {
+            $stmt = $conn->prepare("INSERT INTO Users(firstName,lastName,Email,hashedPassword,ProfilePicture) values(?,?,?,?,?)");
+            $stmt->bind_param("sssss", $Fname, $Lname, $Email, $hashedPassword, $profile);
+            $stmt->execute();
+            echo json_encode(["Registered" => " user Registered Successfully"]);
+        } else {
+            echo json_encode(["misMatch" => "Password Do Not Match"]);
+        }
+    }
 }
