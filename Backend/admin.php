@@ -1,8 +1,11 @@
 <?php
 session_start();
-require_once 'dbConnection.php';
-$db = new Database();
-$conn = $db->getConnection();
+$host = "localhost";
+$username = "root";
+$password = "Ya5in@astu##";
+$dbname = "TravelCraftDB";
+
+$conn = new mysqli($host, $username, $password, $dbname);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["username"];
     $password = $_POST["password"];

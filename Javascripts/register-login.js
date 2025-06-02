@@ -81,8 +81,8 @@ function register(){
             document.querySelectorAll('.password').forEach(pass=>{
                 pass.style.borderBottom='2px solid red';
             })
-        }else if(data.Registered){
-            window.location.href='Login.html';
+        }else if(data.message){
+            window.location.href='Verify.html';
         }
     })
 }

@@ -1,27 +1,36 @@
 create database TravelCraftDB;
 use TravelCraftDB;
-create table Roles (
-	RoleId int primary key auto_increment,
-    RoleName varchar(100)
+CREATE TABLE PendingUsers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    firstName VARCHAR(255),
+    lastName VARCHAR(255),
+    Email VARCHAR(255) UNIQUE,
+    hashedPassword VARCHAR(255),
+    ProfilePicture VARCHAR(255),
+    verificationCode INT
 );
-insert into Roles(RoleName) values('Admin');
-insert into Roles(RoleName) values('Customer');
-create table users (
-	UserId int primary key auto_increment,
-    FirstName varchar(100),
-    LastName varchar(100),
-    Email varchar(100) not null unique,
-    hashedPassword VARBINARY(200) not null,
-    createdAt timestamp default current_timestamp,
-    UpdatedAt timestamp,
-    RoleId int,
-    foreign key (RoleId) references Roles(RoleId)
+create table Users(UserID int primary key auto_increment,
+					firstName varchar(20),
+                    lastName varchar(20),
+                    Email varchar(255) not null unique,
+                    hashedPassword varchar(255),
+                    CreatedAt timestamp default current_timestamp,
+                    ProfilePicture VARCHAR(255),
+                    Privilege enum('Blocked','Active')
+                    );
+create table CallRequest(RequestID int primary key auto_increment,UserID int,
+						PhoneNumber int,RequestStatus enum('Pending','Responded'),
+                        Reason text,
+                        foreign key (UserID) references Users(UserID)
 );
+create table TourAdmin(AdminID int primary key auto_increment,
+                    AdminFirstName varchar(20),
+                    AdminLastName varchar(20),
+                    hashedPassword varchar(255));
 create table Tours(
 	TourId int primary key auto_increment,
     TourName varchar(200),
     Descriptions varchar(1000),
-    Location JSON not null,
     BookedOn timestamp default current_timestamp,
     StartingOn timestamp not null,
     EndOn timestamp null,

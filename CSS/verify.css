@@ -1,0 +1,51 @@
+body{
+    background:#ededed;
+}
+#form{
+    position:fixed;
+    left:10%;
+    top:calc(50% - 150px);
+    width:80%;
+    height:200px;
+    background:#b1aaaaed;
+    border-radius:10px;
+    box-shadow: 1px 10px 20px grey;
+}
+#form input{
+    position:relative;
+    left:10%;
+    width:80%;
+    height:40px;
+    text-align: center;
+    top:30px;
+    border:none;
+    border-bottom:2px solid orange;
+    background:none;
+    font-size: larger;
+    
+}
+#form button{
+    width:50%;
+    height:40px;
+    font-size: larger;
+    border:none;
+    border-radius:10px;
+    background:orange;
+    color:white;
+    position:relative;
+    left:25%;
+    top:60px;
+}
+#form a{
+    position:absolute;
+    bottom:20px;
+    left:30px;
+    width:60px;
+    height:30px;
+    background:rgb(68, 0, 255);
+    text-align: center;
+    align-content: center;
+    color:white;
+    text-decoration: none;
+    border-radius:10px;
+}

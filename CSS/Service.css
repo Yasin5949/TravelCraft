@@ -1109,7 +1109,7 @@ body{
     border-radius:10px;
     width:70%;
     height:300px;
-    background:black;
+    background:#343434;
 }
 .displayContainer .bookedContainer .bookedImage{
     position:relative;

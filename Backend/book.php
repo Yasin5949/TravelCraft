@@ -1,9 +1,12 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-require_once 'dbConnection.php';
-$db = new Database();
-$conn = $db->getConnection();
+$host = "localhost";
+$username = "root";
+$password = "Ya5in@astu##";
+$dbname = "TravelCraftDB";
+
+$conn = new mysqli($host, $username, $password, $dbname);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date1 = new DateTime($_POST['BookedFor']);
     $date2 = new DateTime($_POST['endingDate']);

@@ -1,7 +1,10 @@
 <?php
-require_once 'dbConnection.php';
-$db = new Database();
-$conn = $db->getConnection();
+$host = "localhost";
+$username = "root";
+$password = "Ya5in@astu##";
+$dbname = "TravelCraftDB";
+
+$conn = new mysqli($host, $username, $password, $dbname);
 if (isset($_GET['query'])) {
     $query = $_GET['query'];
     $sql = "UPDATE Users SET Privilege='Blocked' WHERE UserID = ?";

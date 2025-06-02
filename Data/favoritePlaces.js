@@ -25,8 +25,13 @@ export const places=[{
         region:"Oromia",
             placeName:'Awash',
             discription:`
-            It is A River Originate from Ethiopia Oromia region and
-                `,
+            Awash National Park is a breathtaking destination for 
+            nature lovers and adventure
+            seekers alike. Spanning 827
+            square kilometers, this park is a haven of 
+            diverse landscapes, from lush 
+            acacia woodlands to golden savannahs, all 
+            framed by the majestic Awash River`,
             image:`../images/awash-park-5.jpg`,
             socialLinks:{
                 titok:``,
@@ -44,8 +49,17 @@ export const places=[{
         region:"Amhara",
             placeName:'Lalibela',
             discription:`
-            It is A River Originate from Ethiopia Oromia region and
-                `,
+            Step into the heart of 
+            Ethiopia’s history and 
+            faith at Lalibela, a town 
+            famous for its 11 rock-hewn 
+            churches, carved entirely from 
+            solid rock over 800 years ago. 
+            Recognized as a UNESCO World 
+            Heritage Site, it is often called 
+            the “Eighth Wonder of the World” for its breathtaking architecture and deep 
+            spiritual significance
+            `,
             image:`../images/lalibela.jpg`,
             socialLinks:{
                 titok:``,
@@ -64,8 +78,15 @@ export const places=[{
         region:"Oromia",
             placeName:'Bale Mountains',
             discription:`
-            It is A River Originate from Ethiopia Oromia region and
-                `,
+            Located 400 km southeast of
+            Addis Ababa, Bale Mountains 
+            National Park is a breathtaking 
+            natural wonder, home to diverse 
+            landscapes, rare wildlife, and 
+            stunning scenery. The park features towering volcanic peaks, glacial lakes, and vast Afro-Alpine moorlands, making it one of Ethiopia’s most important
+            biodiversity hotspots.
+            
+            `,
             image:`../images/baleviewTwo.jpg`,
             socialLinks:{
                 titok:``,
@@ -105,8 +126,14 @@ export const places=[{
         region:"Oromia",
             placeName:'Sof Omer Cave',
             discription:`
-            It is A River Originate from Ethiopia Oromia region and
-                `,
+            longest cave system, 
+            stretching over 15 kilometers. 
+            This natural wonder was carved 
+            by the Weyib River, creating a 
+            labyrinth of arched tunnels, 
+            towering pillars, 
+            and echoing chambers.
+            `,
             image:`../images/omer.jpg`,
             socialLinks:{
                 titok:``,

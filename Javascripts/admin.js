@@ -459,13 +459,16 @@ function calculate(){
     let total=0;
     fetch('../Backend/allBookedHistory.php')
     .then(response=>response.json())
-    .then(data=>{
-        data.forEach(user=>{
-            total+=parseInt(user.Total);
-        if(user.BookingStatus === 'Pending'){
-            booked+=parseInt(user.Total);
-        }else if(user.BookingStatus === 'Canceled'){
-            canceled+=parseInt(user.Total);
+    .then(data =>{
+        if(data.message){
+    document.querySelector('.report').innerHTML=data.message;
+        }else{
+                data.forEach(user=>{
+                    total+=parseInt(user.Total);
+                    if(user.BookingStatus === 'Pending'){
+                        booked+=parseInt(user.Total);
+                    }else if(user.BookingStatus === 'Canceled'){
+                        canceled+=parseInt(user.Total);
         }
     });
     document.querySelector('.report').innerHTML=`
@@ -473,8 +476,8 @@ function calculate(){
             <div class="canceled">Canceled : -$${canceled}</div>
             <div class="earned">Earned: +$${booked}</div>
     `;
-
-    })   .catch(error => console.error("Error:", error));
+        }
+    }).catch(error => console.error("Error:", error));
 
 }
 let menuIndicator=0;

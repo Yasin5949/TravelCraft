@@ -12,12 +12,6 @@ if ($conn->connect_error) {
     die(json_encode(["error" => "Database connection failed: " . $conn->connect_error]));
 }
 
-if (!isset($_SESSION['UserID'])) {
-    die(json_encode(["error" => "UserID is not set in session"]));
-}
-
-$UserID = intval($_SESSION['UserID']);
-
 $sql = "SELECT 
     u.UserID,
     u.firstName,  
